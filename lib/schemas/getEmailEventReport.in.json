@@ -1,0 +1,66 @@
+{
+    "type": "object",
+    "properties": {
+        "limit": {
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "maximum": 100,
+            "default": 50
+        },
+        "offset": {
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+        },
+        "startDate": {
+            "required": false,
+            "type": "string"
+        },
+        "endDate": {
+            "required": false,
+            "type": "string"
+        },
+        "days": {
+            "required": false,
+            "type": "integer"
+        },
+        "email": {
+            "required": false,
+            "type": "string",
+            "format": "email"
+        },
+        "event": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "bounces",
+                "hardBounces",
+                "softBounces",
+                "delivered",
+                "spam",
+                "requests",
+                "opened",
+                "clicks",
+                "invalid",
+                "deferred",
+                "blocked",
+                "unsubscribed"
+            ]
+        },
+        "tags": {
+            "required": false,
+            "type": "string"
+        },
+        "messageId": {
+            "required": false,
+            "type": "string"
+        },
+        "templateId": {
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+        }
+    }
+}

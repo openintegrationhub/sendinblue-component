@@ -1,0 +1,34 @@
+{
+    "type": "object",
+    "properties": {
+        "limit": {
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "maximum": 30,
+            "default": 10
+        },
+        "offset": {
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+        },
+        "startDate": {
+            "required": false,
+            "type": "string"
+        },
+        "endDate": {
+            "required": false,
+            "type": "string"
+        },
+        "days": {
+            "required": false,
+            "type": "integer"
+        },
+        "tag": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

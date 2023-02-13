@@ -1,0 +1,61 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "required": [
+                "url",
+                "events"
+            ],
+            "properties": {
+                "url": {
+                    "description": "URL of the webhook",
+                    "type": "string",
+                    "format": "url",
+                    "example": "http://requestb.in/173lyyx1"
+                },
+                "description": {
+                    "description": "Description of the webhook",
+                    "type": "string",
+                    "example": "Webhook triggered on unsubscription"
+                },
+                "events": {
+                    "description": "Events triggering the webhook. Possible values for Transactional type webhook – `sent` OR `request`, `delivered`, `hardBounce`, `softBounce`, `blocked`, `spam`, `invalid`, `deferred`, `click`, `opened`, `uniqueOpened` and `unsubscribed` and possible values for Marketing type webhook – `spam`, `opened`, `click`, `hardBounce`, `softBounce`, `unsubscribed`, `listAddition` & `delivered`",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "sent",
+                            "hardBounce",
+                            "softBounce",
+                            "blocked",
+                            "spam",
+                            "delivered",
+                            "request",
+                            "click",
+                            "invalid",
+                            "deferred",
+                            "opened",
+                            "uniqueOpened",
+                            "unsubscribed",
+                            "listAddition",
+                            "contactUpdated",
+                            "contactDeleted"
+                        ],
+                        "example": "unsubscribed"
+                    }
+                },
+                "type": {
+                    "description": "Type of the webhook",
+                    "enum": [
+                        "transactional",
+                        "marketing"
+                    ],
+                    "default": "transactional",
+                    "type": "string",
+                    "example": "marketing"
+                }
+            }
+        }
+    }
+}

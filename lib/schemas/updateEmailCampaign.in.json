@@ -1,0 +1,217 @@
+{
+    "type": "object",
+    "properties": {
+        "campaignId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "tag": {
+                    "description": "Tag of the campaign",
+                    "type": "string",
+                    "example": "Newsletter"
+                },
+                "sender": {
+                    "type": "object",
+                    "description": "Sender details including id or email and name (optional). Only one of either Sender's email or Sender's ID shall be passed in one request at a time. For example `{\"name\":\"xyz\", \"email\":\"example@abc.com\"}` , `{\"name\":\"xyz\", \"id\":123}`",
+                    "properties": {
+                        "name": {
+                            "description": "Sender Name from which the campaign emails are sent",
+                            "type": "string",
+                            "example": "Mary from MyShop"
+                        },
+                        "email": {
+                            "description": "Sender email from which the campaign emails are sent",
+                            "type": "string",
+                            "format": "email",
+                            "example": "newsletter@myshop.com"
+                        },
+                        "id": {
+                            "description": "Select the sender for the campaign on the basis of sender id. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email).",
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 3
+                        }
+                    }
+                },
+                "name": {
+                    "description": "Name of the campaign",
+                    "type": "string",
+                    "example": "Newsletter - May 2017"
+                },
+                "htmlContent": {
+                    "description": "Body of the message (HTML version). REQUIRED if htmlUrl is empty",
+                    "type": "string",
+                    "example": "Spring is here, discover my new collection"
+                },
+                "htmlUrl": {
+                    "description": "Url which contents the body of the email message. REQUIRED if htmlContent is empty",
+                    "type": "string",
+                    "format": "url",
+                    "example": "https://html.domain.com"
+                },
+                "scheduledAt": {
+                    "description": "UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. If sendAtBestTime is set to true, your campaign will be sent according to the date passed (ignoring the time part).",
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2017-06-01T12:30:00+02:00"
+                },
+                "subject": {
+                    "description": "Subject of the campaign",
+                    "type": "string",
+                    "example": "Discover the New Collection !"
+                },
+                "replyTo": {
+                    "description": "Email on which campaign recipients will be able to reply to",
+                    "type": "string",
+                    "format": "email",
+                    "example": "support@myshop.com"
+                },
+                "toField": {
+                    "description": "To personalize the «To» Field. If you want to include the first name and last name of your recipient, add {FNAME} {LNAME}. These contact attributes must already exist in your SendinBlue account. If input parameter 'params' used please use {{contact.FNAME}} {{contact.LNAME}} for personalization",
+                    "type": "string",
+                    "example": "{FNAME} {LNAME}"
+                },
+                "recipients": {
+                    "type": "object",
+                    "description": "List ids to include/exclude from campaign",
+                    "properties": {
+                        "exclusionListIds": {
+                            "description": "List ids which have to be excluded from a campaign",
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 8
+                            }
+                        },
+                        "listIds": {
+                            "description": "Lists Ids to send the campaign to. REQUIRED if already not present in campaign and scheduledAt is not empty",
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 32
+                            }
+                        }
+                    }
+                },
+                "attachmentUrl": {
+                    "description": "Absolute url of the attachment (no local file). Extension allowed: xlsx, xls, ods, docx, docm, doc, csv, pdf, txt, gif, jpg, jpeg, png, tif, tiff, rtf, bmp, cgm, css, shtml, html, htm, zip, xml, ppt, pptx, tar, ez, ics, mobi, msg, pub and eps",
+                    "type": "string",
+                    "format": "url",
+                    "example": "https://attachment.domain.com"
+                },
+                "inlineImageActivation": {
+                    "description": "Status of inline image. inlineImageActivation = false means image can’t be embedded, & inlineImageActivation = true means image can be embedded, in the email. You cannot send a campaign of more than 4MB with images embedded in the email. Campaigns with the images embedded in the email must be sent to less than 5000 contacts.",
+                    "type": "boolean",
+                    "default": false,
+                    "example": true
+                },
+                "mirrorActive": {
+                    "description": "Status of mirror links in campaign. mirrorActive = false means mirror links are deactivated, & mirrorActive = true means mirror links are activated, in the campaign",
+                    "type": "boolean",
+                    "example": true
+                },
+                "recurring": {
+                    "description": "FOR TRIGGER ONLY ! Type of trigger campaign.recurring = false means contact can receive the same Trigger campaign only once, & recurring = true means contact can receive the same Trigger campaign several times",
+                    "type": "boolean",
+                    "default": false,
+                    "example": false
+                },
+                "footer": {
+                    "description": "Footer of the email campaign",
+                    "type": "string",
+                    "example": "[DEFAULT_FOOTER]"
+                },
+                "header": {
+                    "description": "Header of the email campaign",
+                    "type": "string",
+                    "example": "[DEFAULT_HEADER]"
+                },
+                "utmCampaign": {
+                    "description": "Customize the utm_campaign value. If this field is empty, the campaign name will be used. Only alphanumeric characters and spaces are allowed",
+                    "type": "string",
+                    "example": "NL_05_2017"
+                },
+                "params": {
+                    "type": "object",
+                    "description": "Pass the set of attributes to customize the type 'classic' campaign. For example, {\"FNAME\":\"Joe\", \"LNAME\":\"Doe\"}. The 'params' field will get updated, only if the campaign is in New Template Language, else ignored. The New Template Language is dependent on the values of 'subject', 'htmlContent/htmlUrl', 'sender.name' & 'toField'",
+                    "example": {
+                        "FNAME": "Joe",
+                        "LNAME": "Doe"
+                    }
+                },
+                "sendAtBestTime": {
+                    "type": "boolean",
+                    "description": "Set this to true if you want to send your campaign at best time. Note:- if true, warmup ip will be disabled.",
+                    "example": true
+                },
+                "abTesting": {
+                    "description": "Status of A/B Test. abTesting = false means it is disabled, & abTesting = true means it is enabled. 'subjectA', 'subjectB', 'splitRule', 'winnerCriteria' & 'winnerDelay' will be considered if abTesting is set to true. 'subject' if passed is ignored.  Can be set to true only if 'sendAtBestTime' is 'false'. You will be able to set up two subject lines for your campaign and send them to a random sample of your total recipients. Half of the test group will receive version A, and the other half will receive version B",
+                    "type": "boolean",
+                    "default": false,
+                    "example": true
+                },
+                "subjectA": {
+                    "description": "Subject A of the campaign. Considered if abTesting = true. subjectA & subjectB should have unique value",
+                    "type": "string",
+                    "example": "Discover the New Collection!"
+                },
+                "subjectB": {
+                    "description": "Subject B of the campaign. Considered if abTesting = true. subjectA & subjectB should have unique value",
+                    "type": "string",
+                    "example": "Want to discover the New Collection?"
+                },
+                "splitRule": {
+                    "description": "Add the size of your test groups. Considered if abTesting = true. We'll send version A and B to a random sample of recipients, and then the winning version to everyone else",
+                    "type": "integer",
+                    "format": "int64",
+                    "maximum": 50,
+                    "minimum": 1,
+                    "example": 50
+                },
+                "winnerCriteria": {
+                    "type": "string",
+                    "enum": [
+                        "open",
+                        "click"
+                    ],
+                    "description": "Choose the metrics that will determinate the winning version. Considered if 'splitRule' >= 1 and < 50. If splitRule = 50, 'winnerCriteria' is ignored if passed or alreday exist in record",
+                    "example": "open"
+                },
+                "winnerDelay": {
+                    "description": "Choose the duration of the test in hours. Maximum is 7 days, pass 24*7 = 168 hours. The winning version will be sent at the end of the test. Considered if 'splitRule' >= 1 and < 50. If splitRule = 50, 'winnerDelay' is ignored if passed or alreday exist in record",
+                    "type": "integer",
+                    "format": "int64",
+                    "maximum": 168,
+                    "minimum": 1,
+                    "example": 50
+                },
+                "ipWarmupEnable": {
+                    "description": "Available for dedicated ip clients. Set this to true if you wish to warm up your ip.",
+                    "type": "boolean",
+                    "default": false,
+                    "example": true
+                },
+                "initialQuota": {
+                    "description": "Set an initial quota greater than 1 for warming up your ip. We recommend you set a value of 3000.",
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 3000
+                },
+                "increaseRate": {
+                    "description": "Set a percentage increase rate for warming up your ip. We recommend you set the increase rate to 30% per day. If you want to send the same number of emails every day, set the daily increase value to 0%.",
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "example": 70
+                }
+            }
+        }
+    }
+}

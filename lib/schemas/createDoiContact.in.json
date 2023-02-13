@@ -1,0 +1,62 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "required": [
+                "email",
+                "includeListIds",
+                "templateId",
+                "redirectionUrl"
+            ],
+            "properties": {
+                "email": {
+                    "description": "Email address where the confirmation email will be sent. This email address will be the identifier for all other contact attributes.",
+                    "type": "string",
+                    "format": "email",
+                    "example": "elly@example.com"
+                },
+                "attributes": {
+                    "description": "Pass the set of attributes and their values. These attributes must be present in your SendinBlue account. For eg. {'FNAME':'Elly', 'LNAME':'Roger'}",
+                    "type": "object",
+                    "example": {
+                        "FNAME": "Elly",
+                        "LNAME": "Roger"
+                    }
+                },
+                "includeListIds": {
+                    "description": "Lists under user account where contact should be added",
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Id of the list",
+                        "example": 36
+                    }
+                },
+                "excludeListIds": {
+                    "description": "Lists under user account where contact should not be added",
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Id of the list",
+                        "example": 36
+                    }
+                },
+                "templateId": {
+                    "description": "Id of the Double opt-in (DOI) template",
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 2
+                },
+                "redirectionUrl": {
+                    "description": "URL of the web page that user will be redirected to after clicking on the double opt in URL. When editing your DOI template you can reference this URL by using the tag {{ params.DOIurl }}.",
+                    "type": "string",
+                    "format": "url",
+                    "example": "http://requestb.in/173lyyx1"
+                }
+            }
+        }
+    }
+}

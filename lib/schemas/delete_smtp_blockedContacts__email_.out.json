@@ -1,0 +1,86 @@
+{
+    "type": "object",
+    "properties": {
+        "events": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "email",
+                    "date",
+                    "messageId",
+                    "event"
+                ],
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "Email address which generates the event",
+                        "example": "john.smith@example.com"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "UTC date-time on which the event has been generated",
+                        "example": "2017-03-12T12:30:00Z"
+                    },
+                    "subject": {
+                        "type": "string",
+                        "description": "Subject of the event",
+                        "example": "Sib client test"
+                    },
+                    "messageId": {
+                        "type": "string",
+                        "description": "Message ID which generated the event",
+                        "example": "<201798300811.5787683@relay.domain.com>"
+                    },
+                    "event": {
+                        "type": "string",
+                        "enum": [
+                            "bounces",
+                            "hardBounces",
+                            "softBounces",
+                            "delivered",
+                            "spam",
+                            "requests",
+                            "opened",
+                            "clicks",
+                            "invalid",
+                            "deferred",
+                            "blocked",
+                            "unsubscribed"
+                        ],
+                        "description": "Event which occurred",
+                        "example": "delivered"
+                    },
+                    "reason": {
+                        "type": "string",
+                        "description": "Reason of bounce (only available if the event is hardbounce or softbounce)",
+                        "example": "Error connection timeout"
+                    },
+                    "tag": {
+                        "type": "string",
+                        "description": "Tag of the email which generated the event",
+                        "example": "OrderConfirmation"
+                    },
+                    "ip": {
+                        "type": "string",
+                        "description": "IP from which the user has opened the email or clicked on the link (only available if the event is opened or clicks)",
+                        "example": "165.87.3.15"
+                    },
+                    "link": {
+                        "type": "string",
+                        "description": "The link which is sent to the user (only available if the event is requests or opened or clicks)",
+                        "example": "https://www.someexamplelink.com"
+                    },
+                    "from": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "Sender email from which the emails are sent",
+                        "example": "john@example.com"
+                    }
+                }
+            }
+        }
+    }
+}

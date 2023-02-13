@@ -1,0 +1,37 @@
+{
+    "type": "object",
+    "properties": {
+        "campaignId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "type": "object",
+            "required": [
+                "recipientsType"
+            ],
+            "properties": {
+                "notifyURL": {
+                    "description": "URL that will be called once the export process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479",
+                    "type": "string",
+                    "format": "url",
+                    "example": "http://requestb.in/173lyyx1"
+                },
+                "recipientsType": {
+                    "description": "Filter the recipients based on how they interacted with the campaign",
+                    "enum": [
+                        "all",
+                        "delivered",
+                        "answered",
+                        "softBounces",
+                        "hardBounces",
+                        "unsubscribed"
+                    ],
+                    "type": "string",
+                    "example": "answered"
+                }
+            }
+        }
+    }
+}

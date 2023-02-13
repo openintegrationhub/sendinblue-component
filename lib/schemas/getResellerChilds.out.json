@@ -1,0 +1,192 @@
+{
+    "type": "object",
+    "required": [
+        "count"
+    ],
+    "properties": {
+        "children": {
+            "description": "Your children's account information",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object",
+                        "allOf": [
+                            {
+                                "type": "object",
+                                "required": [
+                                    "email",
+                                    "firstName",
+                                    "lastName",
+                                    "companyName"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "description": "Login Email",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "john.smith@example.com"
+                                    },
+                                    "firstName": {
+                                        "description": "First Name",
+                                        "type": "string",
+                                        "example": "John"
+                                    },
+                                    "lastName": {
+                                        "description": "Last Name",
+                                        "type": "string",
+                                        "example": "Smith"
+                                    },
+                                    "companyName": {
+                                        "description": "Name of the company",
+                                        "type": "string",
+                                        "example": "MyCompany"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "required": [
+                                    "password"
+                                ],
+                                "properties": {
+                                    "credits": {
+                                        "description": "Credits available for your child",
+                                        "type": "object",
+                                        "properties": {
+                                            "emailCredits": {
+                                                "description": "Email credits available for your child",
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "example": 98555
+                                            },
+                                            "smsCredits": {
+                                                "description": "SMS credits available for your child",
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "example": 87556
+                                            }
+                                        }
+                                    },
+                                    "statistics": {
+                                        "description": "Statistics about your child account activity",
+                                        "type": "object",
+                                        "properties": {
+                                            "previousMonthTotalSent": {
+                                                "description": "Overall emails sent for the previous month",
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "example": 7654
+                                            },
+                                            "currentMonthTotalSent": {
+                                                "description": "Overall emails sent for current month",
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "example": 4566
+                                            },
+                                            "totalSent": {
+                                                "description": "Overall emails sent for since the account exists",
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "example": 987554
+                                            }
+                                        }
+                                    },
+                                    "password": {
+                                        "description": "The encrypted password of child account",
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "abC01De2fGHI3jkL"
+                                    },
+                                    "ips": {
+                                        "description": "IP(s) associated to a child account user",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "description": "IP(s) associated to the user",
+                                            "example": [
+                                                "17.321.333.54",
+                                                "20.90.76.213"
+                                            ]
+                                        }
+                                    },
+                                    "apiKeys": {
+                                        "description": "API Keys associated to child account",
+                                        "type": "object",
+                                        "required": [
+                                            "v2"
+                                        ],
+                                        "properties": {
+                                            "v2": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "name",
+                                                        "key"
+                                                    ],
+                                                    "properties": {
+                                                        "name": {
+                                                            "description": "Name of the key for version 2",
+                                                            "type": "string",
+                                                            "example": "N˚2"
+                                                        },
+                                                        "key": {
+                                                            "description": "API Key for version 2",
+                                                            "type": "string",
+                                                            "example": "nOpxxxxxy7z"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "v3": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "name",
+                                                        "key"
+                                                    ],
+                                                    "properties": {
+                                                        "name": {
+                                                            "description": "Name of the key for version 3",
+                                                            "type": "string",
+                                                            "example": "N˚3"
+                                                        },
+                                                        "key": {
+                                                            "description": "API Key for version 3",
+                                                            "type": "string",
+                                                            "example": "xkeysib-21881axxxxxcc92e04-mIrexxxx7z"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "description": "ID of the child",
+                                "type": "integer",
+                                "format": "int64",
+                                "example": 187588
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "count": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of child accounts",
+            "example": 24
+        }
+    }
+}

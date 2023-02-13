@@ -1,0 +1,40 @@
+{
+    "type": "object",
+    "properties": {
+        "status": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "suspended",
+                "archive",
+                "sent",
+                "queued",
+                "draft",
+                "inProcess"
+            ]
+        },
+        "startDate": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "endDate": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "limit": {
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "maximum": 1000,
+            "default": 500
+        },
+        "offset": {
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+        }
+    }
+}

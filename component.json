@@ -1,0 +1,1347 @@
+{
+    "title": "SendinBlue API",
+    "description": "SendinBlue provide a RESTFul API that can be used with any languages. With this API, you will be able to :\n  - Manage your campaigns and get the statistics\n  - Manage your contacts\n  - Send transactional Emails and SMS\n  - and much more...\n\nYou can download our wrappers at https://github.com/orgs/sendinblue\n\n**Possible responses**\n  | Code | Message |\n  | :-------------: | ------------- |\n  | 200  | OK. Successful Request  |\n  | 201  | OK. Successful Creation |\n  | 202  | OK. Request accepted |\n  | 204  | OK. Successful Update/Deletion  |\n  | 400  | Error. Bad Request  |\n  | 401  | Error. Authentication Needed  |\n  | 402  | Error. Not enough credit, plan upgrade needed  |\n  | 403  | Error. Permission denied  |\n  | 404  | Error. Object does not exist |\n  | 405  | Error. Method not allowed  |\n  | 406  | Error. Not Acceptable  |\n",
+    "docsUrl": "",
+    "url": "https://api.sendinblue.com/v3/swagger_definition.yml",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.sendinblue.com/v3",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "auth_api-key": {
+                "label": "api-key (api-key)",
+                "viewClass": "TextFieldView",
+                "note": "The API key should be passed in the request headers as `api-key` for authentication."
+            }
+        }
+    },
+    "triggers": {
+        "lookup": {
+            "main": "./lib/lookups/lookup.js",
+            "title": "Function to run a lookup",
+            "description": "Function to call an internal trigger or action"
+        }
+    },
+    "actions": {
+        "getEmailCampaigns": {
+            "main": "./lib/actions/action.js",
+            "title": "Return all your created email campaigns",
+            "callParams": {
+                "pathName": "/emailCampaigns",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getEmailCampaigns.in.json",
+                "out": "./lib/schemas/getEmailCampaigns.out.json"
+            }
+        },
+        "createEmailCampaign": {
+            "main": "./lib/actions/action.js",
+            "title": "Create an email campaign",
+            "callParams": {
+                "pathName": "/emailCampaigns",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createEmailCampaign.in.json",
+                "out": "./lib/schemas/createEmailCampaign.out.json"
+            }
+        },
+        "sendEmailCampaignNow": {
+            "main": "./lib/actions/action.js",
+            "title": "Send an email campaign immediately, based on campaignId",
+            "callParams": {
+                "pathName": "/emailCampaigns/{campaignId}/sendNow",
+                "method": "post"
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendEmailCampaignNow.in.json",
+                "out": "./lib/schemas/sendEmailCampaignNow.out.json"
+            }
+        },
+        "getEmailCampaign": {
+            "main": "./lib/actions/action.js",
+            "title": "Get an email campaign report",
+            "callParams": {
+                "pathName": "/emailCampaigns/{campaignId}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getEmailCampaign.in.json",
+                "out": "./lib/schemas/getEmailCampaign.out.json"
+            }
+        },
+        "deleteEmailCampaign": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete an email campaign",
+            "callParams": {
+                "pathName": "/emailCampaigns/{campaignId}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteEmailCampaign.in.json",
+                "out": "./lib/schemas/deleteEmailCampaign.out.json"
+            }
+        },
+        "updateCampaignStatus": {
+            "main": "./lib/actions/action.js",
+            "title": "Update an email campaign status",
+            "callParams": {
+                "pathName": "/emailCampaigns/{campaignId}/status",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateCampaignStatus.in.json",
+                "out": "./lib/schemas/updateCampaignStatus.out.json"
+            }
+        },
+        "emailExportRecipients": {
+            "main": "./lib/actions/action.js",
+            "title": "Export the recipients of an email campaign",
+            "callParams": {
+                "pathName": "/emailCampaigns/{campaignId}/exportRecipients",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/emailExportRecipients.in.json",
+                "out": "./lib/schemas/emailExportRecipients.out.json"
+            }
+        },
+        "sendReport": {
+            "main": "./lib/actions/action.js",
+            "title": "Send the report of a campaign",
+            "description": "A PDF will be sent to the specified email addresses",
+            "callParams": {
+                "pathName": "/emailCampaigns/{campaignId}/sendReport",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendReport.in.json",
+                "out": "./lib/schemas/sendReport.out.json"
+            }
+        },
+        "getSharedTemplateUrl": {
+            "main": "./lib/actions/action.js",
+            "title": "Get a shared template url",
+            "description": "Get a unique URL to share & import an email template from one Sendinblue account to another.",
+            "callParams": {
+                "pathName": "/emailCampaigns/{campaignId}/sharedUrl",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSharedTemplateUrl.in.json",
+                "out": "./lib/schemas/getSharedTemplateUrl.out.json"
+            }
+        },
+        "getTransacEmailsList": {
+            "main": "./lib/actions/action.js",
+            "title": "Get the list of transactional emails on the basis of allowed filters",
+            "description": "This endpoint will show the list of emails for past 30 days by default. To retrieve emails before that time, please pass startDate and endDate in query filters.",
+            "callParams": {
+                "pathName": "/smtp/emails",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTransacEmailsList.in.json",
+                "out": "./lib/schemas/getTransacEmailsList.out.json"
+            }
+        },
+        "updateEmailCampaign": {
+            "main": "./lib/actions/action.js",
+            "title": "Update an email campaign",
+            "callParams": {
+                "pathName": "/emailCampaigns/{campaignId}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateEmailCampaign.in.json",
+                "out": "./lib/schemas/updateEmailCampaign.out.json"
+            }
+        },
+        "delete_smtp_log__messageId_": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete an SMTP transactional log",
+            "callParams": {
+                "pathName": "/smtp/log/{messageId}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/delete_smtp_log__messageId_.in.json",
+                "out": "./lib/schemas/delete_smtp_log__messageId_.out.json"
+            }
+        },
+        "createSmtpTemplate": {
+            "main": "./lib/actions/action.js",
+            "title": "Create an email template",
+            "callParams": {
+                "pathName": "/smtp/templates",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createSmtpTemplate.in.json",
+                "out": "./lib/schemas/createSmtpTemplate.out.json"
+            }
+        },
+        "sendTestEmail": {
+            "main": "./lib/actions/action.js",
+            "title": "Send an email campaign to your test list",
+            "callParams": {
+                "pathName": "/emailCampaigns/{campaignId}/sendTest",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendTestEmail.in.json",
+                "out": "./lib/schemas/sendTestEmail.out.json"
+            }
+        },
+        "getSmtpTemplates": {
+            "main": "./lib/actions/action.js",
+            "title": "Get the list of email templates",
+            "callParams": {
+                "pathName": "/smtp/templates",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSmtpTemplates.in.json",
+                "out": "./lib/schemas/getSmtpTemplates.out.json"
+            }
+        },
+        "sendTestTemplate": {
+            "main": "./lib/actions/action.js",
+            "title": "Send a template to your test list",
+            "callParams": {
+                "pathName": "/smtp/templates/{templateId}/sendTest",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendTestTemplate.in.json",
+                "out": "./lib/schemas/sendTestTemplate.out.json"
+            }
+        },
+        "deleteSmtpTemplate": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete an inactive email template",
+            "callParams": {
+                "pathName": "/smtp/templates/{templateId}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteSmtpTemplate.in.json",
+                "out": "./lib/schemas/deleteSmtpTemplate.out.json"
+            }
+        },
+        "getSmtpTemplate": {
+            "main": "./lib/actions/action.js",
+            "title": "Returns the template information",
+            "callParams": {
+                "pathName": "/smtp/templates/{templateId}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSmtpTemplate.in.json",
+                "out": "./lib/schemas/getSmtpTemplate.out.json"
+            }
+        },
+        "getAggregatedSmtpReport": {
+            "main": "./lib/actions/action.js",
+            "title": "Get your transactional email activity aggregated over a period of time",
+            "callParams": {
+                "pathName": "/smtp/statistics/aggregatedReport",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAggregatedSmtpReport.in.json",
+                "out": "./lib/schemas/getAggregatedSmtpReport.out.json"
+            }
+        },
+        "getSmtpReport": {
+            "main": "./lib/actions/action.js",
+            "title": "Get your transactional email activity aggregated per day",
+            "callParams": {
+                "pathName": "/smtp/statistics/reports",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSmtpReport.in.json",
+                "out": "./lib/schemas/getSmtpReport.out.json"
+            }
+        },
+        "delete_smtp_blockedContacts__email_": {
+            "main": "./lib/actions/action.js",
+            "title": "Unblock or resubscribe a transactional contact",
+            "callParams": {
+                "pathName": "/smtp/blockedContacts/{email}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/delete_smtp_blockedContacts__email_.in.json",
+                "out": "./lib/schemas/delete_smtp_blockedContacts__email_.out.json"
+            }
+        },
+        "updateSmtpTemplate": {
+            "main": "./lib/actions/action.js",
+            "title": "Update an email template",
+            "callParams": {
+                "pathName": "/smtp/templates/{templateId}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateSmtpTemplate.in.json",
+                "out": "./lib/schemas/updateSmtpTemplate.out.json"
+            }
+        },
+        "getTransacBlockedContacts": {
+            "main": "./lib/actions/action.js",
+            "title": "Get the list of blocked or unsubscribed transactional contacts",
+            "callParams": {
+                "pathName": "/smtp/blockedContacts",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTransacBlockedContacts.in.json",
+                "out": "./lib/schemas/getTransacBlockedContacts.out.json"
+            }
+        },
+        "deleteBlockedDomain": {
+            "main": "./lib/actions/action.js",
+            "title": "Unblock an existing domain from the list of blocked domains",
+            "description": "Unblocks an existing domain from the list of blocked domains",
+            "callParams": {
+                "pathName": "/smtp/blockedDomains/{domain}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteBlockedDomain.in.json",
+                "out": "./lib/schemas/deleteBlockedDomain.out.json"
+            }
+        },
+        "getEmailEventReport": {
+            "main": "./lib/actions/action.js",
+            "title": "Get all your transactional email activity (unaggregated events)",
+            "callParams": {
+                "pathName": "/smtp/statistics/events",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getEmailEventReport.in.json",
+                "out": "./lib/schemas/getEmailEventReport.out.json"
+            }
+        },
+        "blockNewDomain": {
+            "main": "./lib/actions/action.js",
+            "title": "Add a new domain to the list of blocked domains",
+            "description": "Blocks a new domain in order to avoid messages being sent to the same",
+            "callParams": {
+                "pathName": "/smtp/blockedDomains",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/blockNewDomain.in.json",
+                "out": "./lib/schemas/blockNewDomain.out.json"
+            }
+        },
+        "sendTemplate": {
+            "main": "./lib/actions/action.js",
+            "title": "Send a template",
+            "description": "This endpoint is deprecated. Prefer v3/smtp/email instead.",
+            "callParams": {
+                "pathName": "/smtp/templates/{templateId}/send",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendTemplate.in.json",
+                "out": "./lib/schemas/sendTemplate.out.json"
+            }
+        },
+        "getContacts": {
+            "main": "./lib/actions/action.js",
+            "title": "Get all the contacts",
+            "callParams": {
+                "pathName": "/contacts",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getContacts.in.json",
+                "out": "./lib/schemas/getContacts.out.json"
+            }
+        },
+        "deleteHardbounces": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete hardbounces",
+            "description": "Delete hardbounces. To use carefully (e.g. in case of temporary ISP failures)",
+            "callParams": {
+                "pathName": "/smtp/deleteHardbounces",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteHardbounces.in.json",
+                "out": "./lib/schemas/deleteHardbounces.out.json"
+            }
+        },
+        "getBlockedDomains": {
+            "main": "./lib/actions/action.js",
+            "title": "Get the list of blocked domains",
+            "description": "Get the list of blocked domains",
+            "callParams": {
+                "pathName": "/smtp/blockedDomains",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getBlockedDomains.in.json",
+                "out": "./lib/schemas/getBlockedDomains.out.json"
+            }
+        },
+        "createContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a contact",
+            "callParams": {
+                "pathName": "/contacts",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createContact.in.json",
+                "out": "./lib/schemas/createContact.out.json"
+            }
+        },
+        "getContactInfo": {
+            "main": "./lib/actions/action.js",
+            "title": "Get a contact's details",
+            "callParams": {
+                "pathName": "/contacts/{email}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getContactInfo.in.json",
+                "out": "./lib/schemas/getContactInfo.out.json"
+            }
+        },
+        "deleteContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a contact",
+            "callParams": {
+                "pathName": "/contacts/{email}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteContact.in.json",
+                "out": "./lib/schemas/deleteContact.out.json"
+            }
+        },
+        "getAttributes": {
+            "main": "./lib/actions/action.js",
+            "title": "List all attributes",
+            "callParams": {
+                "pathName": "/contacts/attributes",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAttributes.in.json",
+                "out": "./lib/schemas/getAttributes.out.json"
+            }
+        },
+        "updateContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a contact",
+            "callParams": {
+                "pathName": "/contacts/{email}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateContact.in.json",
+                "out": "./lib/schemas/updateContact.out.json"
+            }
+        },
+        "updateAttribute": {
+            "main": "./lib/actions/action.js",
+            "title": "Update contact attribute",
+            "callParams": {
+                "pathName": "/contacts/attributes/{attributeCategory}/{attributeName}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateAttribute.in.json",
+                "out": "./lib/schemas/updateAttribute.out.json"
+            }
+        },
+        "getContactStats": {
+            "main": "./lib/actions/action.js",
+            "title": "Get email campaigns' statistics for a contact",
+            "callParams": {
+                "pathName": "/contacts/{email}/campaignStats",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getContactStats.in.json",
+                "out": "./lib/schemas/getContactStats.out.json"
+            }
+        },
+        "deleteAttribute": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete an attribute",
+            "callParams": {
+                "pathName": "/contacts/attributes/{attributeCategory}/{attributeName}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteAttribute.in.json",
+                "out": "./lib/schemas/deleteAttribute.out.json"
+            }
+        },
+        "createAttribute": {
+            "main": "./lib/actions/action.js",
+            "title": "Create contact attribute",
+            "callParams": {
+                "pathName": "/contacts/attributes/{attributeCategory}/{attributeName}",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createAttribute.in.json",
+                "out": "./lib/schemas/createAttribute.out.json"
+            }
+        },
+        "createDoiContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Create Contact via DOI (Double-Opt-In) Flow",
+            "callParams": {
+                "pathName": "/contacts/doubleOptinConfirmation",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createDoiContact.in.json",
+                "out": "./lib/schemas/createDoiContact.out.json"
+            }
+        },
+        "getFolders": {
+            "main": "./lib/actions/action.js",
+            "title": "Get all folders",
+            "callParams": {
+                "pathName": "/contacts/folders",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getFolders.in.json",
+                "out": "./lib/schemas/getFolders.out.json"
+            }
+        },
+        "getFolder": {
+            "main": "./lib/actions/action.js",
+            "title": "Returns a folder's details",
+            "callParams": {
+                "pathName": "/contacts/folders/{folderId}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getFolder.in.json",
+                "out": "./lib/schemas/getFolder.out.json"
+            }
+        },
+        "createFolder": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a folder",
+            "callParams": {
+                "pathName": "/contacts/folders",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createFolder.in.json",
+                "out": "./lib/schemas/createFolder.out.json"
+            }
+        },
+        "deleteFolder": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a folder (and all its lists)",
+            "callParams": {
+                "pathName": "/contacts/folders/{folderId}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteFolder.in.json",
+                "out": "./lib/schemas/deleteFolder.out.json"
+            }
+        },
+        "updateFolder": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a folder",
+            "callParams": {
+                "pathName": "/contacts/folders/{folderId}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateFolder.in.json",
+                "out": "./lib/schemas/updateFolder.out.json"
+            }
+        },
+        "createList": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a list",
+            "callParams": {
+                "pathName": "/contacts/lists",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createList.in.json",
+                "out": "./lib/schemas/createList.out.json"
+            }
+        },
+        "getFolderLists": {
+            "main": "./lib/actions/action.js",
+            "title": "Get lists in a folder",
+            "callParams": {
+                "pathName": "/contacts/folders/{folderId}/lists",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getFolderLists.in.json",
+                "out": "./lib/schemas/getFolderLists.out.json"
+            }
+        },
+        "getList": {
+            "main": "./lib/actions/action.js",
+            "title": "Get a list's details",
+            "callParams": {
+                "pathName": "/contacts/lists/{listId}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getList.in.json",
+                "out": "./lib/schemas/getList.out.json"
+            }
+        },
+        "getLists": {
+            "main": "./lib/actions/action.js",
+            "title": "Get all the lists",
+            "callParams": {
+                "pathName": "/contacts/lists",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getLists.in.json",
+                "out": "./lib/schemas/getLists.out.json"
+            }
+        },
+        "updateList": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a list",
+            "callParams": {
+                "pathName": "/contacts/lists/{listId}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateList.in.json",
+                "out": "./lib/schemas/updateList.out.json"
+            }
+        },
+        "removeContactFromList": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a contact from a list",
+            "callParams": {
+                "pathName": "/contacts/lists/{listId}/contacts/remove",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/removeContactFromList.in.json",
+                "out": "./lib/schemas/removeContactFromList.out.json"
+            }
+        },
+        "getContactsFromList": {
+            "main": "./lib/actions/action.js",
+            "title": "Get contacts in a list",
+            "callParams": {
+                "pathName": "/contacts/lists/{listId}/contacts",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getContactsFromList.in.json",
+                "out": "./lib/schemas/getContactsFromList.out.json"
+            }
+        },
+        "addContactToList": {
+            "main": "./lib/actions/action.js",
+            "title": "Add existing contacts to a list",
+            "callParams": {
+                "pathName": "/contacts/lists/{listId}/contacts/add",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/addContactToList.in.json",
+                "out": "./lib/schemas/addContactToList.out.json"
+            }
+        },
+        "deleteList": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a list",
+            "callParams": {
+                "pathName": "/contacts/lists/{listId}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteList.in.json",
+                "out": "./lib/schemas/deleteList.out.json"
+            }
+        },
+        "requestContactExport": {
+            "main": "./lib/actions/action.js",
+            "title": "Export contacts",
+            "description": "It returns the background process ID which on completion calls the notify URL that you have set in the input. File will be available in csv.",
+            "callParams": {
+                "pathName": "/contacts/export",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/requestContactExport.in.json",
+                "out": "./lib/schemas/requestContactExport.out.json"
+            }
+        },
+        "getSmsCampaign": {
+            "main": "./lib/actions/action.js",
+            "title": "Get an SMS campaign",
+            "callParams": {
+                "pathName": "/smsCampaigns/{campaignId}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSmsCampaign.in.json",
+                "out": "./lib/schemas/getSmsCampaign.out.json"
+            }
+        },
+        "getSmsCampaigns": {
+            "main": "./lib/actions/action.js",
+            "title": "Returns the information for all your created SMS campaigns",
+            "callParams": {
+                "pathName": "/smsCampaigns",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSmsCampaigns.in.json",
+                "out": "./lib/schemas/getSmsCampaigns.out.json"
+            }
+        },
+        "updateSmsCampaign": {
+            "main": "./lib/actions/action.js",
+            "title": "Update an SMS campaign",
+            "callParams": {
+                "pathName": "/smsCampaigns/{campaignId}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateSmsCampaign.in.json",
+                "out": "./lib/schemas/updateSmsCampaign.out.json"
+            }
+        },
+        "importContacts": {
+            "main": "./lib/actions/action.js",
+            "title": "Import contacts",
+            "description": "It returns the background process ID which on completion calls the notify URL that you have set in the input.",
+            "callParams": {
+                "pathName": "/contacts/import",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/importContacts.in.json",
+                "out": "./lib/schemas/importContacts.out.json"
+            }
+        },
+        "createSmsCampaign": {
+            "main": "./lib/actions/action.js",
+            "title": "Creates an SMS campaign",
+            "callParams": {
+                "pathName": "/smsCampaigns",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createSmsCampaign.in.json",
+                "out": "./lib/schemas/createSmsCampaign.out.json"
+            }
+        },
+        "sendSmsCampaignNow": {
+            "main": "./lib/actions/action.js",
+            "title": "Send your SMS campaign immediately",
+            "callParams": {
+                "pathName": "/smsCampaigns/{campaignId}/sendNow",
+                "method": "post"
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendSmsCampaignNow.in.json",
+                "out": "./lib/schemas/sendSmsCampaignNow.out.json"
+            }
+        },
+        "deleteSmsCampaign": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete an SMS campaign",
+            "callParams": {
+                "pathName": "/smsCampaigns/{campaignId}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteSmsCampaign.in.json",
+                "out": "./lib/schemas/deleteSmsCampaign.out.json"
+            }
+        },
+        "updateSmsCampaignStatus": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a campaign's status",
+            "callParams": {
+                "pathName": "/smsCampaigns/{campaignId}/status",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateSmsCampaignStatus.in.json",
+                "out": "./lib/schemas/updateSmsCampaignStatus.out.json"
+            }
+        },
+        "requestSmsRecipientExport": {
+            "main": "./lib/actions/action.js",
+            "title": "Export an SMS campaign's recipients",
+            "description": "It returns the background process ID which on completion calls the notify URL that you have set in the input.",
+            "callParams": {
+                "pathName": "/smsCampaigns/{campaignId}/exportRecipients",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/requestSmsRecipientExport.in.json",
+                "out": "./lib/schemas/requestSmsRecipientExport.out.json"
+            }
+        },
+        "sendTestSms": {
+            "main": "./lib/actions/action.js",
+            "title": "Send a test SMS campaign",
+            "callParams": {
+                "pathName": "/smsCampaigns/{campaignId}/sendTest",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendTestSms.in.json",
+                "out": "./lib/schemas/sendTestSms.out.json"
+            }
+        },
+        "sendTransacSms": {
+            "main": "./lib/actions/action.js",
+            "title": "Send SMS message to a mobile number",
+            "callParams": {
+                "pathName": "/transactionalSMS/sms",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendTransacSms.in.json",
+                "out": "./lib/schemas/sendTransacSms.out.json"
+            }
+        },
+        "sendSmsReport": {
+            "main": "./lib/actions/action.js",
+            "title": "Send an SMS campaign's report",
+            "description": "Send report of Sent and Archived campaign, to the specified email addresses, with respective data and a pdf attachment in detail.",
+            "callParams": {
+                "pathName": "/smsCampaigns/{campaignId}/sendReport",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendSmsReport.in.json",
+                "out": "./lib/schemas/sendSmsReport.out.json"
+            }
+        },
+        "getTransacSmsReport": {
+            "main": "./lib/actions/action.js",
+            "title": "Get your SMS activity aggregated per day",
+            "callParams": {
+                "pathName": "/transactionalSMS/statistics/reports",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTransacSmsReport.in.json",
+                "out": "./lib/schemas/getTransacSmsReport.out.json"
+            }
+        },
+        "getTransacAggregatedSmsReport": {
+            "main": "./lib/actions/action.js",
+            "title": "Get your SMS activity aggregated over a period of time",
+            "callParams": {
+                "pathName": "/transactionalSMS/statistics/aggregatedReport",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTransacAggregatedSmsReport.in.json",
+                "out": "./lib/schemas/getTransacAggregatedSmsReport.out.json"
+            }
+        },
+        "getSmsEvents": {
+            "main": "./lib/actions/action.js",
+            "title": "Get all your SMS activity (unaggregated events)",
+            "callParams": {
+                "pathName": "/transactionalSMS/statistics/events",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSmsEvents.in.json",
+                "out": "./lib/schemas/getSmsEvents.out.json"
+            }
+        },
+        "deleteSender": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a sender",
+            "callParams": {
+                "pathName": "/senders/{senderId}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteSender.in.json",
+                "out": "./lib/schemas/deleteSender.out.json"
+            }
+        },
+        "updateSender": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a sender",
+            "callParams": {
+                "pathName": "/senders/{senderId}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateSender.in.json",
+                "out": "./lib/schemas/updateSender.out.json"
+            }
+        },
+        "createSender": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a new sender",
+            "callParams": {
+                "pathName": "/senders",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createSender.in.json",
+                "out": "./lib/schemas/createSender.out.json"
+            }
+        },
+        "getSenders": {
+            "main": "./lib/actions/action.js",
+            "title": "Get the list of all your senders",
+            "callParams": {
+                "pathName": "/senders",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSenders.in.json",
+                "out": "./lib/schemas/getSenders.out.json"
+            }
+        },
+        "getIps": {
+            "main": "./lib/actions/action.js",
+            "title": "Get all the dedicated IPs for your account",
+            "callParams": {
+                "pathName": "/senders/ips",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getIps.in.json",
+                "out": "./lib/schemas/getIps.out.json"
+            }
+        },
+        "getIpsFromSender": {
+            "main": "./lib/actions/action.js",
+            "title": "Get all the dedicated IPs for a sender",
+            "callParams": {
+                "pathName": "/senders/{senderId}/ips",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getIpsFromSender.in.json",
+                "out": "./lib/schemas/getIpsFromSender.out.json"
+            }
+        },
+        "createWebhook": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a webhook",
+            "callParams": {
+                "pathName": "/webhooks",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createWebhook.in.json",
+                "out": "./lib/schemas/createWebhook.out.json"
+            }
+        },
+        "getWebhook": {
+            "main": "./lib/actions/action.js",
+            "title": "Get a webhook details",
+            "callParams": {
+                "pathName": "/webhooks/{webhookId}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getWebhook.in.json",
+                "out": "./lib/schemas/getWebhook.out.json"
+            }
+        },
+        "updateWebhook": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a webhook",
+            "callParams": {
+                "pathName": "/webhooks/{webhookId}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateWebhook.in.json",
+                "out": "./lib/schemas/updateWebhook.out.json"
+            }
+        },
+        "getWebhooks": {
+            "main": "./lib/actions/action.js",
+            "title": "Get all webhooks",
+            "callParams": {
+                "pathName": "/webhooks",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getWebhooks.in.json",
+                "out": "./lib/schemas/getWebhooks.out.json"
+            }
+        },
+        "getChildInfo": {
+            "main": "./lib/actions/action.js",
+            "title": "Get a child account's details",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getChildInfo.in.json",
+                "out": "./lib/schemas/getChildInfo.out.json"
+            }
+        },
+        "deleteWebhook": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a webhook",
+            "callParams": {
+                "pathName": "/webhooks/{webhookId}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteWebhook.in.json",
+                "out": "./lib/schemas/deleteWebhook.out.json"
+            }
+        },
+        "getResellerChilds": {
+            "main": "./lib/actions/action.js",
+            "title": "Get the list of all children accounts",
+            "callParams": {
+                "pathName": "/reseller/children",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getResellerChilds.in.json",
+                "out": "./lib/schemas/getResellerChilds.out.json"
+            }
+        },
+        "createResellerChild": {
+            "main": "./lib/actions/action.js",
+            "title": "Creates a reseller child",
+            "callParams": {
+                "pathName": "/reseller/children",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createResellerChild.in.json",
+                "out": "./lib/schemas/createResellerChild.out.json"
+            }
+        },
+        "updateResellerChild": {
+            "main": "./lib/actions/action.js",
+            "title": "Update info of reseller's child based on the child identifier supplied",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateResellerChild.in.json",
+                "out": "./lib/schemas/updateResellerChild.out.json"
+            }
+        },
+        "getChildAccountCreationStatus": {
+            "main": "./lib/actions/action.js",
+            "title": "Get the status of a reseller's child account creation, whether it is successfully created (exists) or not based on the childIdentifier supplied",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}/accountCreationStatus",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getChildAccountCreationStatus.in.json",
+                "out": "./lib/schemas/getChildAccountCreationStatus.out.json"
+            }
+        },
+        "sendTransacEmail": {
+            "main": "./lib/actions/action.js",
+            "title": "Send a transactional email",
+            "callParams": {
+                "pathName": "/smtp/email",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendTransacEmail.in.json",
+                "out": "./lib/schemas/sendTransacEmail.out.json"
+            }
+        },
+        "updateChildAccountStatus": {
+            "main": "./lib/actions/action.js",
+            "title": "Update info of reseller's child account status based on the identifier supplied",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}/accountStatus",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateChildAccountStatus.in.json",
+                "out": "./lib/schemas/updateChildAccountStatus.out.json"
+            }
+        },
+        "deleteResellerChild": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a single reseller child based on the child identifier supplied",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteResellerChild.in.json",
+                "out": "./lib/schemas/deleteResellerChild.out.json"
+            }
+        },
+        "associateIpToChild": {
+            "main": "./lib/actions/action.js",
+            "title": "Associate a dedicated IP to the child",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}/ips/associate",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/associateIpToChild.in.json",
+                "out": "./lib/schemas/associateIpToChild.out.json"
+            }
+        },
+        "removeCredits": {
+            "main": "./lib/actions/action.js",
+            "title": "Remove Email and/or SMS credits from a specific child account",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}/credits/remove",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/removeCredits.in.json",
+                "out": "./lib/schemas/removeCredits.out.json"
+            }
+        },
+        "getTransacEmailContent": {
+            "main": "./lib/actions/action.js",
+            "title": "Get the personalized content of a sent transactional email",
+            "callParams": {
+                "pathName": "/smtp/emails/{uuid}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTransacEmailContent.in.json",
+                "out": "./lib/schemas/getTransacEmailContent.out.json"
+            }
+        },
+        "getChildDomains": {
+            "main": "./lib/actions/action.js",
+            "title": "Get all sender domains for a specific child account",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}/domains",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getChildDomains.in.json",
+                "out": "./lib/schemas/getChildDomains.out.json"
+            }
+        },
+        "dissociateIpFromChild": {
+            "main": "./lib/actions/action.js",
+            "title": "Dissociate a dedicated IP to the child",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}/ips/dissociate",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/dissociateIpFromChild.in.json",
+                "out": "./lib/schemas/dissociateIpFromChild.out.json"
+            }
+        },
+        "updateChildDomain": {
+            "main": "./lib/actions/action.js",
+            "title": "Update the sender domain of reseller's child based on the childIdentifier and domainName passed",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}/domains/{domainName}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateChildDomain.in.json",
+                "out": "./lib/schemas/updateChildDomain.out.json"
+            }
+        },
+        "createChildDomain": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a domain for a child account",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}/domains",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createChildDomain.in.json",
+                "out": "./lib/schemas/createChildDomain.out.json"
+            }
+        },
+        "getAccount": {
+            "main": "./lib/actions/action.js",
+            "title": "Get your account information, plan and credits details",
+            "callParams": {
+                "pathName": "/account",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAccount.in.json",
+                "out": "./lib/schemas/getAccount.out.json"
+            }
+        },
+        "getProcesses": {
+            "main": "./lib/actions/action.js",
+            "title": "Return all the processes for your account",
+            "callParams": {
+                "pathName": "/processes",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getProcesses.in.json",
+                "out": "./lib/schemas/getProcesses.out.json"
+            }
+        },
+        "getSsoToken": {
+            "main": "./lib/actions/action.js",
+            "title": "Get session token to access Sendinblue (SSO)",
+            "description": "It returns a session [token] which will remain valid for a short period of time. A child account will be able to access a white-labeled section by using the following url pattern => https:/email.mydomain.com/login/sso?token=[token]",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}/auth",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSsoToken.in.json",
+                "out": "./lib/schemas/getSsoToken.out.json"
+            }
+        },
+        "uploadImageToGallery": {
+            "main": "./lib/actions/action.js",
+            "title": "Upload an image to your account's image gallery",
+            "callParams": {
+                "pathName": "/emailCampaigns/images",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/uploadImageToGallery.in.json",
+                "out": "./lib/schemas/uploadImageToGallery.out.json"
+            }
+        },
+        "getProcess": {
+            "main": "./lib/actions/action.js",
+            "title": "Return the informations for a process",
+            "callParams": {
+                "pathName": "/processes/{processId}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getProcess.in.json",
+                "out": "./lib/schemas/getProcess.out.json"
+            }
+        },
+        "addCredits": {
+            "main": "./lib/actions/action.js",
+            "title": "Add Email and/or SMS credits to a specific child account",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}/credits/add",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/addCredits.in.json",
+                "out": "./lib/schemas/addCredits.out.json"
+            }
+        },
+        "getAbTestCampaignResult": {
+            "main": "./lib/actions/action.js",
+            "title": "Get an A/B test email campaign results",
+            "description": "Obtain winning version of an A/B test email campaign",
+            "callParams": {
+                "pathName": "/emailCampaigns/{campaignId}/abTestCampaignResult",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAbTestCampaignResult.in.json",
+                "out": "./lib/schemas/getAbTestCampaignResult.out.json"
+            }
+        },
+        "deleteChildDomain": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete the sender domain of the reseller child based on the childIdentifier and domainName passed",
+            "callParams": {
+                "pathName": "/reseller/children/{childIdentifier}/domains/{domainName}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteChildDomain.in.json",
+                "out": "./lib/schemas/deleteChildDomain.out.json"
+            }
+        }
+    }
+}

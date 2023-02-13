@@ -1,0 +1,37 @@
+{
+    "type": "object",
+    "properties": {
+        "listId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "modifiedSince": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "limit": {
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "maximum": 500,
+            "default": 50
+        },
+        "offset": {
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+        },
+        "sort": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "asc",
+                "desc"
+            ],
+            "default": "desc"
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "type": "object",
+    "required": [
+        "reference",
+        "messageId"
+    ],
+    "properties": {
+        "reference": {
+            "type": "string",
+            "example": "ab1cde2fgh3i4jklmno"
+        },
+        "messageId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1511882900176220
+        },
+        "smsCount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Count of SMS's to send multiple text messages",
+            "example": 2
+        },
+        "usedCredits": {
+            "type": "number",
+            "format": "float",
+            "description": "SMS credits used per text message",
+            "example": 0.7
+        },
+        "remainingCredits": {
+            "type": "number",
+            "format": "float",
+            "description": "Remaining SMS credits of the user",
+            "example": 82.85
+        }
+    }
+}

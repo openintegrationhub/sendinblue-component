@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "required": [
+        "ips"
+    ],
+    "properties": {
+        "ips": {
+            "description": "Dedicated IP(s) linked to a sender",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "ip",
+                    "domain",
+                    "weight"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ID of the dedicated IP",
+                        "example": 3
+                    },
+                    "ip": {
+                        "type": "string",
+                        "description": "Dedicated IP",
+                        "example": "123.65.8.22"
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "Domain associated to the IP",
+                        "example": "mailing.myshop.dom"
+                    },
+                    "weight": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Weight of the IP",
+                        "example": 75
+                    }
+                }
+            }
+        }
+    }
+}

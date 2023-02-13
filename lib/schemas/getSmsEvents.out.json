@@ -1,0 +1,64 @@
+{
+    "type": "object",
+    "properties": {
+        "events": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "phoneNumber",
+                    "date",
+                    "messageId",
+                    "event"
+                ],
+                "properties": {
+                    "phoneNumber": {
+                        "type": "string",
+                        "description": "Phone number which has generated the event",
+                        "example": "00189001094"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "UTC date-time on which the event has been generated",
+                        "example": "2017-03-12T12:30:00Z"
+                    },
+                    "messageId": {
+                        "type": "string",
+                        "description": "Message ID which generated the event",
+                        "example": "1472640582425378"
+                    },
+                    "event": {
+                        "type": "string",
+                        "enum": [
+                            "bounces",
+                            "hardBounces",
+                            "softBounces",
+                            "delivered",
+                            "sent",
+                            "accepted",
+                            "unsubscription",
+                            "replies",
+                            "blocked"
+                        ],
+                        "description": "Event which occurred",
+                        "example": "accepted"
+                    },
+                    "reason": {
+                        "type": "string",
+                        "description": "Reason of bounce (only available if the event is hardbounce or softbounce)",
+                        "example": "Message is undeliverable due to an incorrect / invalid / blacklisted / permanently barred MSISDN for this operator"
+                    },
+                    "reply": {
+                        "type": "string"
+                    },
+                    "tag": {
+                        "type": "string",
+                        "description": "Tag of the SMS which generated the event",
+                        "example": "CabWaiting"
+                    }
+                }
+            }
+        }
+    }
+}

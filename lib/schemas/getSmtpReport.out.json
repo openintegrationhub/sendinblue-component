@@ -1,0 +1,106 @@
+{
+    "type": "object",
+    "properties": {
+        "reports": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "date",
+                    "requests",
+                    "delivered",
+                    "hardBounces",
+                    "softBounces",
+                    "clicks",
+                    "uniqueClicks",
+                    "opens",
+                    "uniqueOpens",
+                    "spamReports",
+                    "blocked",
+                    "invalid",
+                    "unsubscribed"
+                ],
+                "properties": {
+                    "date": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date of the statistics",
+                        "example": "2017-04-06"
+                    },
+                    "requests": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of requests for the date",
+                        "example": 65
+                    },
+                    "delivered": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of delivered emails for the date",
+                        "example": 63
+                    },
+                    "hardBounces": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of hardbounces for the date",
+                        "example": 1
+                    },
+                    "softBounces": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of softbounces for the date",
+                        "example": 1
+                    },
+                    "clicks": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of clicks for the date",
+                        "example": 6
+                    },
+                    "uniqueClicks": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of unique clicks for the date",
+                        "example": 5
+                    },
+                    "opens": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of openings for the date",
+                        "example": 58
+                    },
+                    "uniqueOpens": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of unique openings for the date",
+                        "example": 52
+                    },
+                    "spamReports": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of complaints (spam reports) for the date",
+                        "example": 0
+                    },
+                    "blocked": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of blocked emails for the date",
+                        "example": 0
+                    },
+                    "invalid": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of invalid emails for the date",
+                        "example": 0
+                    },
+                    "unsubscribed": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of unsubscribed emails for the date",
+                        "example": 0
+                    }
+                }
+            }
+        }
+    }
+}

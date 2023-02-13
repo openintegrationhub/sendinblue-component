@@ -1,0 +1,62 @@
+{
+    "type": "object",
+    "properties": {
+        "limit": {
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "maximum": 100,
+            "default": 50
+        },
+        "startDate": {
+            "required": false,
+            "type": "string"
+        },
+        "endDate": {
+            "required": false,
+            "type": "string"
+        },
+        "offset": {
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+        },
+        "days": {
+            "required": false,
+            "type": "integer"
+        },
+        "phoneNumber": {
+            "required": false,
+            "type": "string"
+        },
+        "event": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "bounces",
+                "hardBounces",
+                "softBounces",
+                "delivered",
+                "sent",
+                "accepted",
+                "unsubscription",
+                "replies",
+                "blocked"
+            ]
+        },
+        "tags": {
+            "required": false,
+            "type": "string"
+        },
+        "sort": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "asc",
+                "desc"
+            ],
+            "default": "desc"
+        }
+    }
+}

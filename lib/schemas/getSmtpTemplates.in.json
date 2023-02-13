@@ -1,0 +1,22 @@
+{
+    "type": "object",
+    "properties": {
+        "templateStatus": {
+            "required": false,
+            "type": "boolean"
+        },
+        "limit": {
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "maximum": 1000,
+            "default": 50
+        },
+        "offset": {
+            "required": false,
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+        }
+    }
+}

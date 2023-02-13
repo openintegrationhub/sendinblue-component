@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "startDate": {
+                    "description": "Starting date (YYYY-MM-DD) of the time period for deletion. The hardbounces occurred after this date will be deleted. Must be less than or equal to the endDate",
+                    "type": "string",
+                    "example": "2016-12-31"
+                },
+                "endDate": {
+                    "description": "Ending date (YYYY-MM-DD) of the time period for deletion. The hardbounces until this date will be deleted. Must be greater than or equal to the startDate",
+                    "type": "string",
+                    "example": "2017-01-31"
+                },
+                "contactEmail": {
+                    "description": "Target a specific email address",
+                    "type": "string",
+                    "format": "email",
+                    "example": "alex76@example.com"
+                }
+            }
+        }
+    }
+}

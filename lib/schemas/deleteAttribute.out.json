@@ -1,0 +1,79 @@
+{
+    "type": "object",
+    "required": [
+        "attributes"
+    ],
+    "properties": {
+        "attributes": {
+            "type": "array",
+            "description": "Listing of available contact attributes in your account",
+            "items": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "category"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the attribute",
+                        "example": "LASTNAME"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": [
+                            "normal",
+                            "transactional",
+                            "category",
+                            "calculated",
+                            "global"
+                        ],
+                        "description": "Category of the attribute",
+                        "example": "category"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "text",
+                            "date",
+                            "float",
+                            "id",
+                            "boolean"
+                        ],
+                        "description": "Type of the attribute",
+                        "example": "text"
+                    },
+                    "enumeration": {
+                        "type": "array",
+                        "description": "Parameter only available for \"category\" type attributes.",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "value",
+                                "label"
+                            ],
+                            "properties": {
+                                "value": {
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "description": "ID of Value of the \"category\" type attribute",
+                                    "example": 1
+                                },
+                                "label": {
+                                    "type": "string",
+                                    "description": "Label of the \"category\" type attribute",
+                                    "example": "Women"
+                                }
+                            }
+                        }
+                    },
+                    "calculatedValue": {
+                        "type": "string",
+                        "description": "Calculated value formula",
+                        "example": "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]"
+                    }
+                }
+            }
+        }
+    }
+}

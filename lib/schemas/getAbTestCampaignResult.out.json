@@ -1,0 +1,248 @@
+{
+    "type": "object",
+    "properties": {
+        "winningVersion": {
+            "type": "string",
+            "description": "Winning Campaign Info. pending = Campaign has been picked for sending and winning version is yet to be decided, tie = A tie happened between both the versions, notAvailable = Campaign has not yet been picked for sending.",
+            "enum": [
+                "notAvailable",
+                "pending",
+                "tie",
+                "A",
+                "B"
+            ],
+            "example": "A"
+        },
+        "winningCriteria": {
+            "type": "string",
+            "description": "Criteria choosen for winning version (Open/Click)",
+            "enum": [
+                "Open",
+                "Click"
+            ],
+            "example": "Open"
+        },
+        "winningSubjectLine": {
+            "type": "string",
+            "description": "Subject Line of current winning version",
+            "example": "Subject Line A"
+        },
+        "openRate": {
+            "type": "string",
+            "description": "Open rate for current winning version",
+            "example": "70%"
+        },
+        "clickRate": {
+            "type": "string",
+            "description": "Click rate for current winning version",
+            "example": "70%"
+        },
+        "winningVersionRate": {
+            "type": "string",
+            "description": "Open/Click rate for the winner version",
+            "example": "70%"
+        },
+        "statistics": {
+            "type": "object",
+            "required": [
+                "openers",
+                "clicks",
+                "unsubscribed",
+                "hardBounces",
+                "softBounces",
+                "complaints"
+            ],
+            "properties": {
+                "openers": {
+                    "description": "Percentage of a particular event for both versions",
+                    "type": "object",
+                    "required": [
+                        "Version A",
+                        "Version B"
+                    ],
+                    "properties": {
+                        "Version A": {
+                            "type": "string",
+                            "description": "percentage of an event for version A",
+                            "example": "50%"
+                        },
+                        "Version B": {
+                            "type": "string",
+                            "description": "percentage of an event for version B",
+                            "example": "50%"
+                        }
+                    }
+                },
+                "clicks": {
+                    "description": "Percentage of a particular event for both versions",
+                    "type": "object",
+                    "required": [
+                        "Version A",
+                        "Version B"
+                    ],
+                    "properties": {
+                        "Version A": {
+                            "type": "string",
+                            "description": "percentage of an event for version A",
+                            "example": "50%"
+                        },
+                        "Version B": {
+                            "type": "string",
+                            "description": "percentage of an event for version B",
+                            "example": "50%"
+                        }
+                    }
+                },
+                "unsubscribed": {
+                    "description": "Percentage of a particular event for both versions",
+                    "type": "object",
+                    "required": [
+                        "Version A",
+                        "Version B"
+                    ],
+                    "properties": {
+                        "Version A": {
+                            "type": "string",
+                            "description": "percentage of an event for version A",
+                            "example": "50%"
+                        },
+                        "Version B": {
+                            "type": "string",
+                            "description": "percentage of an event for version B",
+                            "example": "50%"
+                        }
+                    }
+                },
+                "hardBounces": {
+                    "description": "Percentage of a particular event for both versions",
+                    "type": "object",
+                    "required": [
+                        "Version A",
+                        "Version B"
+                    ],
+                    "properties": {
+                        "Version A": {
+                            "type": "string",
+                            "description": "percentage of an event for version A",
+                            "example": "50%"
+                        },
+                        "Version B": {
+                            "type": "string",
+                            "description": "percentage of an event for version B",
+                            "example": "50%"
+                        }
+                    }
+                },
+                "softBounces": {
+                    "description": "Percentage of a particular event for both versions",
+                    "type": "object",
+                    "required": [
+                        "Version A",
+                        "Version B"
+                    ],
+                    "properties": {
+                        "Version A": {
+                            "type": "string",
+                            "description": "percentage of an event for version A",
+                            "example": "50%"
+                        },
+                        "Version B": {
+                            "type": "string",
+                            "description": "percentage of an event for version B",
+                            "example": "50%"
+                        }
+                    }
+                },
+                "complaints": {
+                    "description": "Percentage of a particular event for both versions",
+                    "type": "object",
+                    "required": [
+                        "Version A",
+                        "Version B"
+                    ],
+                    "properties": {
+                        "Version A": {
+                            "type": "string",
+                            "description": "percentage of an event for version A",
+                            "example": "50%"
+                        },
+                        "Version B": {
+                            "type": "string",
+                            "description": "percentage of an event for version B",
+                            "example": "50%"
+                        }
+                    }
+                }
+            }
+        },
+        "clickedLinks": {
+            "type": "object",
+            "required": [
+                "Version A",
+                "Version B"
+            ],
+            "properties": {
+                "Version A": {
+                    "description": "Information on clicked links for a particular version",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "link",
+                            "clicksCount",
+                            "clickRate"
+                        ],
+                        "properties": {
+                            "link": {
+                                "type": "string",
+                                "description": "URL of the link",
+                                "example": "https://facbook.com/versionA"
+                            },
+                            "clicksCount": {
+                                "type": "number",
+                                "format": "int64",
+                                "description": "Number of times a link is clicked",
+                                "example": 3
+                            },
+                            "clickRate": {
+                                "type": "string",
+                                "description": "Percentage of clicks of link with respect to total clicks",
+                                "example": "40%"
+                            }
+                        }
+                    }
+                },
+                "Version B": {
+                    "description": "Information on clicked links for a particular version",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "link",
+                            "clicksCount",
+                            "clickRate"
+                        ],
+                        "properties": {
+                            "link": {
+                                "type": "string",
+                                "description": "URL of the link",
+                                "example": "https://facbook.com/versionA"
+                            },
+                            "clicksCount": {
+                                "type": "number",
+                                "format": "int64",
+                                "description": "Number of times a link is clicked",
+                                "example": 3
+                            },
+                            "clickRate": {
+                                "type": "string",
+                                "description": "Percentage of clicks of link with respect to total clicks",
+                                "example": "40%"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

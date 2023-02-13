@@ -1,0 +1,173 @@
+{
+    "allOf": [
+        {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "status",
+                "content",
+                "scheduledAt",
+                "sender",
+                "createdAt",
+                "modifiedAt"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "ID of the SMS Campaign",
+                    "example": 2
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the SMS Campaign",
+                    "example": "PROMO CODE"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "draft",
+                        "sent",
+                        "archive",
+                        "queued",
+                        "suspended",
+                        "inProcess"
+                    ],
+                    "description": "Status of the SMS Campaign",
+                    "example": "draft"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "Content of the SMS Campaign",
+                    "example": "Visit our Store and get some discount !"
+                },
+                "scheduledAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "UTC date-time on which SMS campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format",
+                    "example": "2017-06-01T12:30:00Z"
+                },
+                "sender": {
+                    "type": "string",
+                    "description": "Sender of the SMS Campaign",
+                    "example": "MyCompany"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Creation UTC date-time of the SMS campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)",
+                    "example": "2017-06-01T12:30:00Z"
+                },
+                "modifiedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "UTC date-time of last modification of the SMS campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)",
+                    "example": "2017-05-01T12:30:00Z"
+                }
+            }
+        },
+        {
+            "type": "object",
+            "required": [
+                "recipients",
+                "statistics"
+            ],
+            "properties": {
+                "recipients": {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "type": "object",
+                            "required": [
+                                "lists",
+                                "exclusionLists"
+                            ],
+                            "properties": {
+                                "lists": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "description": "List IDs included in the campaign",
+                                        "example": 21
+                                    }
+                                },
+                                "exclusionLists": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "description": "List IDs excluded of the campaign",
+                                        "example": 13
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                "statistics": {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "type": "object",
+                            "required": [
+                                "delivered",
+                                "sent",
+                                "processing",
+                                "softBounces",
+                                "hardBounces",
+                                "unsubscriptions",
+                                "answered"
+                            ],
+                            "properties": {
+                                "delivered": {
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "description": "Number of delivered SMS",
+                                    "example": 2987
+                                },
+                                "sent": {
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "description": "Number of sent SMS",
+                                    "example": 3000
+                                },
+                                "processing": {
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "description": "Number of processing SMS",
+                                    "example": 0
+                                },
+                                "softBounces": {
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "description": "Number of softbounced SMS",
+                                    "example": 3
+                                },
+                                "hardBounces": {
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "description": "Number of hardbounced SMS",
+                                    "example": 1
+                                },
+                                "unsubscriptions": {
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "description": "Number of unsubscription SMS",
+                                    "example": 3
+                                },
+                                "answered": {
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "description": "Number of replies to the SMS",
+                                    "example": 2
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

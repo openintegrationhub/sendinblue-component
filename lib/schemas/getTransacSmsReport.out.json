@@ -1,0 +1,85 @@
+{
+    "type": "object",
+    "properties": {
+        "reports": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "date",
+                    "requests",
+                    "delivered",
+                    "softBounces",
+                    "hardBounces",
+                    "blocked",
+                    "unsubscribed",
+                    "replied",
+                    "accepted",
+                    "rejected"
+                ],
+                "properties": {
+                    "date": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date for which statistics are retrieved",
+                        "example": "2017-03-17"
+                    },
+                    "requests": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of requests for the date",
+                        "example": 87
+                    },
+                    "delivered": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of delivered SMS for the date",
+                        "example": 85
+                    },
+                    "hardBounces": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of hardbounces for the date",
+                        "example": 1
+                    },
+                    "softBounces": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of softbounces for the date",
+                        "example": 1
+                    },
+                    "blocked": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of blocked contact for the date",
+                        "example": 0
+                    },
+                    "unsubscribed": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of unsubscription for the date",
+                        "example": 1
+                    },
+                    "replied": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of answered SMS for the date",
+                        "example": 2
+                    },
+                    "accepted": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of accepted for the date",
+                        "example": 85
+                    },
+                    "rejected": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of rejected for the date",
+                        "example": 1
+                    }
+                }
+            }
+        }
+    }
+}

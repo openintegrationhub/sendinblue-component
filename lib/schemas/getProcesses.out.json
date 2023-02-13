@@ -1,0 +1,54 @@
+{
+    "type": "object",
+    "required": [
+        "count"
+    ],
+    "properties": {
+        "processes": {
+            "description": "List of processes available on your account",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "status",
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Id of the process",
+                        "example": 145
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "queued",
+                            "in_process",
+                            "completed"
+                        ],
+                        "description": "Status of the process",
+                        "example": "queued"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Process name",
+                        "example": "IMPORTUSER"
+                    },
+                    "export_url": {
+                        "type": "string",
+                        "description": "URL on which send export the of contacts once the process is completed",
+                        "example": "http://requestb.in/16ua3aj1"
+                    }
+                }
+            }
+        },
+        "count": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of processes available on your account",
+            "example": 5
+        }
+    }
+}

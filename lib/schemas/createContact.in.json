@@ -1,0 +1,58 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "description": "Email address of the user. Mandatory if \"SMS\" field is not passed in \"attributes\" parameter. Mobile Number in \"SMS\" field should be passed with proper country code. For example {\"SMS\":\"+91xxxxxxxxxx\"} or {\"SMS\":\"0091xxxxxxxxxx\"}",
+                    "type": "string",
+                    "format": "email",
+                    "example": "elly@example.com"
+                },
+                "attributes": {
+                    "description": "Pass the set of attributes and their values. These attributes must be present in your SendinBlue account. For eg. {\"FNAME\":\"Elly\", \"LNAME\":\"Roger\"}",
+                    "type": "object",
+                    "example": {
+                        "FNAME": "Elly",
+                        "LNAME": "Roger"
+                    }
+                },
+                "emailBlacklisted": {
+                    "description": "Set this field to blacklist the contact for emails (emailBlacklisted = true)",
+                    "type": "boolean",
+                    "example": false
+                },
+                "smsBlacklisted": {
+                    "description": "Set this field to blacklist the contact for SMS (smsBlacklisted = true)",
+                    "type": "boolean",
+                    "example": false
+                },
+                "listIds": {
+                    "description": "Ids of the lists to add the contact to",
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Id of the list to add the contact to",
+                        "example": 36
+                    }
+                },
+                "updateEnabled": {
+                    "description": "Facilitate to update the existing contact in the same request (updateEnabled = true)",
+                    "type": "boolean",
+                    "default": false,
+                    "example": false
+                },
+                "smtpBlacklistSender": {
+                    "description": "transactional email forbidden sender for contact. Use only for email Contact ( only available if updateEnabled = true )",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "email"
+                    }
+                }
+            }
+        }
+    }
+}

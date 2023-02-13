@@ -1,0 +1,207 @@
+{
+    "allOf": [
+        {
+            "type": "object",
+            "allOf": [
+                {
+                    "type": "object",
+                    "required": [
+                        "email",
+                        "firstName",
+                        "lastName",
+                        "companyName"
+                    ],
+                    "properties": {
+                        "email": {
+                            "description": "Login Email",
+                            "type": "string",
+                            "format": "email",
+                            "example": "john.smith@example.com"
+                        },
+                        "firstName": {
+                            "description": "First Name",
+                            "type": "string",
+                            "example": "John"
+                        },
+                        "lastName": {
+                            "description": "Last Name",
+                            "type": "string",
+                            "example": "Smith"
+                        },
+                        "companyName": {
+                            "description": "Name of the company",
+                            "type": "string",
+                            "example": "MyCompany"
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "address"
+                    ],
+                    "properties": {
+                        "address": {
+                            "description": "Address informations",
+                            "type": "object",
+                            "required": [
+                                "city",
+                                "street",
+                                "zipCode",
+                                "country"
+                            ],
+                            "properties": {
+                                "street": {
+                                    "description": "Street information",
+                                    "type": "string",
+                                    "example": "47 Harbour Street"
+                                },
+                                "city": {
+                                    "description": "City information",
+                                    "type": "string",
+                                    "example": "New-York"
+                                },
+                                "zipCode": {
+                                    "description": "Zip Code information",
+                                    "type": "string",
+                                    "example": "9867"
+                                },
+                                "country": {
+                                    "description": "Country information",
+                                    "type": "string",
+                                    "example": "United States of America"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "type": "object",
+            "required": [
+                "plan",
+                "relay"
+            ],
+            "properties": {
+                "plan": {
+                    "description": "Information about your plans and credits",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "type",
+                            "creditsType",
+                            "credits"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "Displays the plan type of the user",
+                                "enum": [
+                                    "payAsYouGo",
+                                    "free",
+                                    "subscription",
+                                    "sms",
+                                    "reseller"
+                                ],
+                                "example": "subscription"
+                            },
+                            "creditsType": {
+                                "type": "string",
+                                "description": "This is the type of the credit, \"Send Limit\" is one of the possible types of credit of a user. \"Send Limit\" implies the total number of emails you can send to the subscribers in your account.",
+                                "enum": [
+                                    "sendLimit"
+                                ],
+                                "example": "sendLimit"
+                            },
+                            "credits": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "Remaining credits of the user",
+                                "example": 8755
+                            },
+                            "startDate": {
+                                "description": "Date of the period from which the plan will start (only available for \"subscription\" and \"reseller\" plan type)",
+                                "type": "string",
+                                "format": "date",
+                                "example": "2016-12-31"
+                            },
+                            "endDate": {
+                                "description": "Date of the period from which the plan will end (only available for \"subscription\" and \"reseller\" plan type)",
+                                "type": "string",
+                                "format": "date",
+                                "example": "2017-01-31"
+                            },
+                            "userLimit": {
+                                "description": "Only in case of reseller account. It implies the total number of child accounts you can add to your account.",
+                                "type": "integer",
+                                "example": 10
+                            }
+                        }
+                    }
+                },
+                "relay": {
+                    "description": "Information about your transactional email account",
+                    "type": "object",
+                    "required": [
+                        "enabled",
+                        "data"
+                    ],
+                    "properties": {
+                        "enabled": {
+                            "description": "Status of your transactional email Account (true=Enabled, false=Disabled)",
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "data": {
+                            "type": "object",
+                            "description": "Data regarding the transactional email account",
+                            "required": [
+                                "userName",
+                                "relay",
+                                "port"
+                            ],
+                            "properties": {
+                                "userName": {
+                                    "description": "Email to use as login on transactional platform",
+                                    "type": "string",
+                                    "format": "email",
+                                    "example": "john.smith@example.com"
+                                },
+                                "relay": {
+                                    "description": "URL of the SMTP Relay",
+                                    "type": "string",
+                                    "example": "relay.domain.com"
+                                },
+                                "port": {
+                                    "description": "Port used for SMTP Relay",
+                                    "type": "integer",
+                                    "example": 125
+                                }
+                            }
+                        }
+                    }
+                },
+                "marketingAutomation": {
+                    "type": "object",
+                    "required": [
+                        "enabled"
+                    ],
+                    "properties": {
+                        "key": {
+                            "description": "Marketing Automation Tracker ID",
+                            "type": "string",
+                            "example": "iso05aopqych87ysy0jymf"
+                        },
+                        "enabled": {
+                            "description": "Status of Marketing Automation Plateform activation for your account (true=enabled, false=disabled)",
+                            "type": "boolean",
+                            "example": false
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

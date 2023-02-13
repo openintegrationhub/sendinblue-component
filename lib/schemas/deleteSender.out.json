@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "required": [
+        "id"
+    ],
+    "properties": {
+        "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the Sender created",
+            "example": 5
+        },
+        "spfError": {
+            "type": "boolean",
+            "description": "Status of SPF configuration for the sender (true = SPF not well configured, false = SPF well configured)",
+            "example": true
+        },
+        "dkimError": {
+            "type": "boolean",
+            "description": "Status of DKIM configuration for the sender (true = DKIM not well configured, false = DKIM well configured)",
+            "example": false
+        }
+    }
+}

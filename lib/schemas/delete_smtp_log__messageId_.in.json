@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "messageId": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

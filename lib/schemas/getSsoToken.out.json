@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "required": [
+        "token"
+    ],
+    "properties": {
+        "token": {
+            "description": "Session token. It will remain valid for a short period of time only.",
+            "type": "string",
+            "example": "ede520dxxxxxxxxxxxx76d631fba2"
+        }
+    }
+}

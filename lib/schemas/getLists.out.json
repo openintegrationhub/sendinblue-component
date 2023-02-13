@@ -1,0 +1,72 @@
+{
+    "type": "object",
+    "required": [
+        "lists",
+        "count"
+    ],
+    "properties": {
+        "lists": {
+            "type": "array",
+            "description": "Listing of all the lists available in your account",
+            "items": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "name",
+                            "totalSubscribers",
+                            "totalBlacklisted"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "ID of the list",
+                                "example": 23
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Name of the list",
+                                "example": "Magento Customers - EN"
+                            },
+                            "totalBlacklisted": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "Number of blacklisted contacts in the list",
+                                "example": 13
+                            },
+                            "totalSubscribers": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "Number of contacts in the list",
+                                "example": 1776
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "folderId"
+                        ],
+                        "properties": {
+                            "folderId": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "ID of the folder",
+                                "example": 2
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "count": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of lists in your account",
+            "example": 150
+        }
+    }
+}

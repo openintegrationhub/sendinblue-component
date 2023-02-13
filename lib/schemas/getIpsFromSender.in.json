@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "senderId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        }
+    }
+}

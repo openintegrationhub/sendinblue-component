@@ -1,0 +1,286 @@
+{
+    "type": "object",
+    "description": "Campaign Statistics for the contact",
+    "properties": {
+        "messagesSent": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "campaignId",
+                    "eventTime"
+                ],
+                "properties": {
+                    "campaignId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ID of the campaign which generated the event",
+                        "example": 3
+                    },
+                    "eventTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "UTC date-time of the event",
+                        "example": "2017-03-12T20:15:13Z"
+                    }
+                }
+            }
+        },
+        "hardBounces": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "campaignId",
+                    "eventTime"
+                ],
+                "properties": {
+                    "campaignId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ID of the campaign which generated the event",
+                        "example": 3
+                    },
+                    "eventTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "UTC date-time of the event",
+                        "example": "2017-03-12T20:15:13Z"
+                    }
+                }
+            }
+        },
+        "softBounces": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "campaignId",
+                    "eventTime"
+                ],
+                "properties": {
+                    "campaignId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ID of the campaign which generated the event",
+                        "example": 3
+                    },
+                    "eventTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "UTC date-time of the event",
+                        "example": "2017-03-12T20:15:13Z"
+                    }
+                }
+            }
+        },
+        "complaints": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "campaignId",
+                    "eventTime"
+                ],
+                "properties": {
+                    "campaignId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ID of the campaign which generated the event",
+                        "example": 3
+                    },
+                    "eventTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "UTC date-time of the event",
+                        "example": "2017-03-12T20:15:13Z"
+                    }
+                }
+            }
+        },
+        "unsubscriptions": {
+            "type": "object",
+            "required": [
+                "userUnsubscription",
+                "adminUnsubscription"
+            ],
+            "properties": {
+                "userUnsubscription": {
+                    "type": "array",
+                    "description": "Contact has unsubscribed via the unsubscription link in the email",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "campaignId",
+                            "eventTime"
+                        ],
+                        "properties": {
+                            "campaignId": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "ID of the campaign which generated the event",
+                                "example": 3
+                            },
+                            "eventTime": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "UTC date-time of the event",
+                                "example": "2017-03-12T20:15:13Z"
+                            },
+                            "ip": {
+                                "type": "string",
+                                "description": "IP from which the user has unsubscribed",
+                                "example": "165.87.3.15"
+                            }
+                        }
+                    }
+                },
+                "adminUnsubscription": {
+                    "type": "array",
+                    "description": "Contact has been unsubscribed from the administrator",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "eventTime"
+                        ],
+                        "properties": {
+                            "eventTime": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "UTC date-time of the event",
+                                "example": "2017-03-12T20:15:13Z"
+                            },
+                            "ip": {
+                                "type": "string",
+                                "description": "IP from which the user has been unsubscribed",
+                                "example": "165.87.3.15"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "opened": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "campaignId",
+                    "count",
+                    "eventTime",
+                    "ip"
+                ],
+                "properties": {
+                    "campaignId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ID of the campaign which generated the event",
+                        "example": 3
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of openings of the campaign",
+                        "example": 3
+                    },
+                    "eventTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "UTC date-time of the event",
+                        "example": "2017-03-12T20:15:13Z"
+                    },
+                    "ip": {
+                        "type": "string",
+                        "description": "IP from which the user has opened the campaign",
+                        "example": "165.87.3.15"
+                    }
+                }
+            }
+        },
+        "clicked": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "campaignId",
+                    "links"
+                ],
+                "properties": {
+                    "campaignId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ID of the campaign which generated the event",
+                        "example": 3
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "count",
+                                "eventTime",
+                                "ip",
+                                "url"
+                            ],
+                            "properties": {
+                                "count": {
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "description": "Number of clicks on this link for the campaign",
+                                    "example": 1
+                                },
+                                "eventTime": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "UTC date-time of the event",
+                                    "example": "2017-03-12T20:15:13Z"
+                                },
+                                "ip": {
+                                    "type": "string",
+                                    "description": "IP from which the user has clicked on the link",
+                                    "example": "165.87.3.15"
+                                },
+                                "url": {
+                                    "type": "string",
+                                    "description": "URL of the clicked link",
+                                    "example": "www.myshop.com"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "transacAttributes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "orderDate",
+                    "orderPrice",
+                    "orderId"
+                ],
+                "properties": {
+                    "orderDate": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date of the order",
+                        "example": "2017-03-12"
+                    },
+                    "orderPrice": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Price of the order",
+                        "example": 24.99
+                    },
+                    "orderId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ID of the order",
+                        "example": 248
+                    }
+                }
+            }
+        }
+    }
+}

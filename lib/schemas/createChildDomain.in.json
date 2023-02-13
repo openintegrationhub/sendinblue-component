@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "properties": {
+        "childIdentifier": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "domain": {
+                    "description": "Sender domain to add for a specific child account",
+                    "type": "string",
+                    "example": "mychilddomain.com"
+                }
+            }
+        }
+    }
+}

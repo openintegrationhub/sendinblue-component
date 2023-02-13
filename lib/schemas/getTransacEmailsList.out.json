@@ -1,0 +1,67 @@
+{
+    "type": "object",
+    "properties": {
+        "transactionalEmails": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "email",
+                    "subject",
+                    "messageId",
+                    "uuid",
+                    "date"
+                ],
+                "properties": {
+                    "email": {
+                        "description": "Email address to which transactional email has been sent",
+                        "type": "string",
+                        "format": "email",
+                        "example": "john.smith@example.com"
+                    },
+                    "subject": {
+                        "description": "Subject of the sent email",
+                        "type": "string",
+                        "example": "Summer Camp"
+                    },
+                    "templateId": {
+                        "description": "Id of the template",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 2
+                    },
+                    "messageId": {
+                        "description": "Message Id of the sent email",
+                        "type": "string",
+                        "example": "<201798300811.5700093@relay.domain.com>"
+                    },
+                    "uuid": {
+                        "description": "Unique id of the email sent to a particular contact",
+                        "type": "string",
+                        "example": "5a78c-209ok98262910-s99a341"
+                    },
+                    "date": {
+                        "description": "Date on which transactional email was sent",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2017-03-12T12:30:00Z"
+                    },
+                    "from": {
+                        "description": "Email address of the sender from which the email was sent",
+                        "type": "string",
+                        "format": "email",
+                        "example": "diana.doe@example.com"
+                    },
+                    "tags": {
+                        "description": "Tags used for your email",
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "example": "tag1"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

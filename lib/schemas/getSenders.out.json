@@ -1,0 +1,71 @@
+{
+    "type": "object",
+    "properties": {
+        "senders": {
+            "description": "List of the senders available in your account",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "email",
+                    "active"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "Id of the sender",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 0
+                    },
+                    "name": {
+                        "description": "From Name associated to the sender",
+                        "type": "string",
+                        "example": "Marketing"
+                    },
+                    "email": {
+                        "description": "From Email associated to the sender",
+                        "type": "string",
+                        "example": "marketing@mycompany.com"
+                    },
+                    "active": {
+                        "description": "Status of sender (true=activated, false=deactivated)",
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "ips": {
+                        "description": "List of dedicated IP(s) available in the account. This data is displayed only for dedicated IPs",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "ip",
+                                "domain",
+                                "weight"
+                            ],
+                            "properties": {
+                                "ip": {
+                                    "description": "Dedicated IP available in your account",
+                                    "type": "string",
+                                    "example": "123.98.689.7"
+                                },
+                                "domain": {
+                                    "description": "Domain of the IP",
+                                    "type": "string",
+                                    "example": "mycompany.com"
+                                },
+                                "weight": {
+                                    "description": "Weight of the IP for this sender",
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "example": 50
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

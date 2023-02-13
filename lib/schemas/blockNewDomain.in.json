@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "required": [
+                "domain"
+            ],
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "description": "name of the domain to be blocked",
+                    "example": "example.com"
+                }
+            }
+        }
+    }
+}

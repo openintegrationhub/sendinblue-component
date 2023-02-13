@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "required": [
+                "imageUrl"
+            ],
+            "properties": {
+                "imageUrl": {
+                    "description": "The absolute url of the image (no local file). Maximum allowed size for image is 2MB. Allowed extensions for images are - jpeg, jpg, png, bmp, gif.",
+                    "type": "string",
+                    "example": "https://somedomain.com/image1.jpg"
+                },
+                "name": {
+                    "description": "Name of the image.",
+                    "type": "string",
+                    "example": "nature.jpg"
+                }
+            }
+        }
+    }
+}

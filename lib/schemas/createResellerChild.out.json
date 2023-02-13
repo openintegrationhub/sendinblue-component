@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "required": [
+        "authKey"
+    ],
+    "properties": {
+        "authKey": {
+            "type": "string",
+            "description": "AuthKey of Reseller child created",
+            "example": "xkeysib-21881axxxxxcc92e04-mIrexxxx7z"
+        },
+        "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Id of Reseller child created",
+            "example": 1234567
+        }
+    }
+}

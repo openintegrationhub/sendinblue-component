@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "processId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        }
+    }
+}

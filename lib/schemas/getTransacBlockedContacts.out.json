@@ -1,0 +1,68 @@
+{
+    "type": "object",
+    "properties": {
+        "count": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Count of blocked or unsubscribed contact",
+            "example": 1
+        },
+        "contacts": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "email",
+                    "senderEmail",
+                    "reason",
+                    "blockedAt"
+                ],
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "Email address of the blocked or unsubscribed contact",
+                        "example": "john.smith@example.com"
+                    },
+                    "senderEmail": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "Sender email address of the blocked or unsubscribed contact",
+                        "example": "john.smith@example.com"
+                    },
+                    "reason": {
+                        "type": "object",
+                        "description": "Reason for blocking / unsubscribing",
+                        "example": "Admin blocked",
+                        "properties": {
+                            "code": {
+                                "type": "string",
+                                "enum": [
+                                    "unsubscribedViaMA",
+                                    "unsubscribedViaEmail",
+                                    "adminBlocked",
+                                    "unsubscribedViaApi",
+                                    "hardBounce",
+                                    "contactFlaggedAsSpam"
+                                ],
+                                "description": "Reason code for blocking / unsubscribing (This code is safe for comparison)",
+                                "example": "AdminBlocked"
+                            },
+                            "message": {
+                                "type": "string",
+                                "description": "Reason for blocking / unsubscribing (This string is not safe for comparison)",
+                                "example": "Admin blocked"
+                            }
+                        }
+                    },
+                    "blockedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Date when the contact was blocked or unsubscribed on",
+                        "example": "2017-05-01T12:30:00Z"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "properties": {
+        "email": {
+            "required": true,
+            "type": "string"
+        },
+        "startDate": {
+            "required": false,
+            "type": "string",
+            "format": "date"
+        },
+        "endDate": {
+            "required": false,
+            "type": "string",
+            "format": "date"
+        }
+    }
+}

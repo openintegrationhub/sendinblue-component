@@ -1,0 +1,104 @@
+{
+    "type": "object",
+    "required": [
+        "id",
+        "name",
+        "subject",
+        "isActive",
+        "testSent",
+        "sender",
+        "replyTo",
+        "toField",
+        "tag",
+        "htmlContent",
+        "createdAt",
+        "modifiedAt"
+    ],
+    "properties": {
+        "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the template",
+            "example": 4
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of the template",
+            "example": "Order Confirmation - EN"
+        },
+        "subject": {
+            "type": "string",
+            "description": "Subject of the template",
+            "example": "Thanks for your order !"
+        },
+        "isActive": {
+            "type": "boolean",
+            "description": "Status of template (true=active, false=inactive)",
+            "example": true
+        },
+        "testSent": {
+            "type": "boolean",
+            "description": "Status of test sending for the template (true=test email has been sent, false=test email has not been sent)",
+            "example": true
+        },
+        "sender": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "From email for the template",
+                    "type": "string",
+                    "example": "Mary form MyShop"
+                },
+                "email": {
+                    "description": "From email for the template",
+                    "type": "string",
+                    "format": "email",
+                    "example": "contact@myshop.fr"
+                },
+                "id": {
+                    "description": "Sender id of the template",
+                    "type": "string",
+                    "example": 43
+                }
+            }
+        },
+        "replyTo": {
+            "type": "string",
+            "format": "email",
+            "description": "Email defined as the \"Reply to\" for the template",
+            "example": "replyto@domain.com"
+        },
+        "toField": {
+            "type": "string",
+            "description": "Customisation of the \"to\" field for the template",
+            "example": "{FIRSTNAME} {LASTNAME}"
+        },
+        "tag": {
+            "type": "string",
+            "description": "Tag of the template",
+            "example": "sports"
+        },
+        "htmlContent": {
+            "type": "string",
+            "description": "HTML content of the template",
+            "example": "Your order n°xxxxx has been confirmed. Thanks for your purchase."
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ)",
+            "example": "2017-05-01T12:30:00Z"
+        },
+        "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last modification UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ)",
+            "example": "2017-05-12T12:30:00Z"
+        },
+        "doiTemplate": {
+            "type": "boolean",
+            "description": "It is true if template is a valid Double opt-in (DOI) template, otherwise it is false. This field will be available only in case of single template detail call.",
+            "example": false
+        }
+    }
+}

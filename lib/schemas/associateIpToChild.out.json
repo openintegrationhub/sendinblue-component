@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "required": [
+        "childAccountCreated"
+    ],
+    "properties": {
+        "childAccountCreated": {
+            "description": "Status of child account creation whether it is successfully created (exists) or not.",
+            "type": "boolean",
+            "example": true
+        }
+    }
+}

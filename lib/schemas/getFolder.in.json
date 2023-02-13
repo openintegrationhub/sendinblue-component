@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "folderId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        }
+    }
+}

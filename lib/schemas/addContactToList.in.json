@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "listId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "emails": {
+                    "description": "Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.",
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 150,
+                    "items": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "Email to add to a list",
+                        "example": "john.smith@contact.com"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,845 @@
+{
+    "type": "object",
+    "required": [
+        "count"
+    ],
+    "properties": {
+        "campaigns": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "allOf": [
+                            {
+                                "type": "object",
+                                "required": [
+                                    "id",
+                                    "name",
+                                    "type",
+                                    "status"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "description": "ID of the campaign",
+                                        "example": 12
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Name of the campaign",
+                                        "example": "EN - Sales Summer 2017"
+                                    },
+                                    "subject": {
+                                        "type": "string",
+                                        "description": "Subject of the campaign. Only available if `abTesting` flag of the campaign is `false`",
+                                        "example": "20% OFF for 2017 Summer Sales"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "classic",
+                                            "trigger"
+                                        ],
+                                        "description": "Type of campaign",
+                                        "example": "classic"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "enum": [
+                                            "draft",
+                                            "sent",
+                                            "archive",
+                                            "queued",
+                                            "suspended",
+                                            "in_process"
+                                        ],
+                                        "description": "Status of the campaign",
+                                        "example": "sent"
+                                    },
+                                    "scheduledAt": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "UTC date-time on which campaign is scheduled (YYYY-MM-DDTHH:mm:ss.SSSZ)",
+                                        "example": "2017-06-01T12:30:00Z"
+                                    },
+                                    "abTesting": {
+                                        "description": "Status of A/B Test for the campaign. abTesting = false means it is disabled, & abTesting = true means it is enabled.",
+                                        "type": "boolean",
+                                        "example": true
+                                    },
+                                    "subjectA": {
+                                        "description": "Subject A of the ab-test campaign. Only available if `abTesting` flag of the campaign is `true`",
+                                        "type": "string",
+                                        "example": "Discover the New Collection!"
+                                    },
+                                    "subjectB": {
+                                        "description": "Subject B of the ab-test campaign. Only available if `abTesting` flag of the campaign is `true`",
+                                        "type": "string",
+                                        "example": "Want to discover the New Collection?"
+                                    },
+                                    "splitRule": {
+                                        "description": "The size of your ab-test groups. Only available if `abTesting` flag of the campaign is `true`",
+                                        "type": "integer",
+                                        "example": 25
+                                    },
+                                    "winnerCriteria": {
+                                        "description": "Criteria for the winning version. Only available if `abTesting` flag of the campaign is `true`",
+                                        "type": "string",
+                                        "example": "open"
+                                    },
+                                    "winnerDelay": {
+                                        "description": "The duration of the test in hours at the end of which the winning version will be sent. Only available if `abTesting` flag of the campaign is `true`",
+                                        "type": "integer",
+                                        "example": 50
+                                    },
+                                    "sendAtBestTime": {
+                                        "type": "boolean",
+                                        "description": "It is true if you have chosen to send your campaign at best time, otherwise it is false",
+                                        "example": true
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "required": [
+                                    "testSent",
+                                    "header",
+                                    "footer",
+                                    "sender",
+                                    "replyTo",
+                                    "toField",
+                                    "htmlContent",
+                                    "tag",
+                                    "createdAt",
+                                    "modifiedAt"
+                                ],
+                                "properties": {
+                                    "testSent": {
+                                        "type": "boolean",
+                                        "description": "Retrieved the status of test email sending. (true=Test email has been sent  false=Test email has not been sent)",
+                                        "example": true
+                                    },
+                                    "header": {
+                                        "type": "string",
+                                        "description": "Header of the campaign",
+                                        "example": "[DEFAULT_HEADER]"
+                                    },
+                                    "footer": {
+                                        "type": "string",
+                                        "description": "Footer of the campaign",
+                                        "example": "[DEFAULT_FOOTER]"
+                                    },
+                                    "sender": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "description": "Sender name of the campaign",
+                                                "type": "string",
+                                                "example": "Marketing"
+                                            },
+                                            "email": {
+                                                "description": "Sender email of the campaign",
+                                                "type": "string",
+                                                "format": "email",
+                                                "example": "marketing@mycompany.com"
+                                            },
+                                            "id": {
+                                                "description": "Sender id of the campaign",
+                                                "type": "string",
+                                                "example": 43
+                                            }
+                                        }
+                                    },
+                                    "replyTo": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "description": "Email defined as the \"Reply to\" of the campaign",
+                                        "example": "replyto@domain.com"
+                                    },
+                                    "toField": {
+                                        "type": "string",
+                                        "description": "Customisation of the \"to\" field of the campaign",
+                                        "example": "{FNAME} {LNAME}"
+                                    },
+                                    "htmlContent": {
+                                        "type": "string",
+                                        "description": "HTML content of the campaign",
+                                        "example": "This is my HTML Content"
+                                    },
+                                    "shareLink": {
+                                        "type": "string",
+                                        "format": "url",
+                                        "description": "Link to share the campaign on social medias",
+                                        "example": "http://dhh.sendinblue.com/fhsgccc.html?t=9865448900"
+                                    },
+                                    "tag": {
+                                        "type": "string",
+                                        "description": "Tag of the campaign",
+                                        "example": "Newsletter"
+                                    },
+                                    "createdAt": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Creation UTC date-time of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)",
+                                        "example": "2017-05-01T12:30:00Z"
+                                    },
+                                    "modifiedAt": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "UTC date-time of last modification of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)",
+                                        "example": "2017-05-01T12:30:00Z"
+                                    },
+                                    "inlineImageActivation": {
+                                        "type": "boolean",
+                                        "description": "Status of inline image. inlineImageActivation = false means image can’t be embedded, & inlineImageActivation = true means image can be embedded, in the email.",
+                                        "example": true
+                                    },
+                                    "mirrorActive": {
+                                        "type": "boolean",
+                                        "description": "Status of mirror links in campaign. mirrorActive = false means mirror links are deactivated, & mirrorActive = true means mirror links are activated, in the campaign",
+                                        "example": true
+                                    },
+                                    "recurring": {
+                                        "description": "FOR TRIGGER ONLY ! Type of trigger campaign.recurring = false means contact can receive the same Trigger campaign only once, & recurring = true means contact can receive the same Trigger campaign several times",
+                                        "type": "boolean",
+                                        "example": true
+                                    },
+                                    "sentDate": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Sent UTC date-time of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ). Only available if 'status' of the campaign is 'sent'",
+                                        "example": "2018-12-01T16:30:00Z"
+                                    },
+                                    "returnBounce": {
+                                        "description": "Total number of non-delivered campaigns for a particular campaign id.",
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": 5
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "recipients",
+                            "statistics"
+                        ],
+                        "properties": {
+                            "recipients": {
+                                "allOf": [
+                                    {
+                                        "type": "object",
+                                        "required": [
+                                            "lists",
+                                            "exclusionLists"
+                                        ],
+                                        "properties": {
+                                            "lists": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "description": "List IDs included in the campaign",
+                                                    "example": 21
+                                                }
+                                            },
+                                            "exclusionLists": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "description": "List IDs excluded of the campaign",
+                                                    "example": 13
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "statistics": {
+                                "allOf": [
+                                    {
+                                        "type": "object",
+                                        "required": [
+                                            "globalStats",
+                                            "campaignStats",
+                                            "mirrorClick",
+                                            "remaining",
+                                            "linksStats",
+                                            "statsByDomain",
+                                            "statsByDevice",
+                                            "statsByBrowser"
+                                        ],
+                                        "properties": {
+                                            "globalStats": {
+                                                "type": "object",
+                                                "description": "Overall statistics of the campaign",
+                                                "allOf": [
+                                                    {
+                                                        "type": "object",
+                                                        "required": [
+                                                            "uniqueClicks",
+                                                            "clickers",
+                                                            "complaints",
+                                                            "delivered",
+                                                            "sent",
+                                                            "softBounces",
+                                                            "hardBounces",
+                                                            "uniqueViews",
+                                                            "unsubscriptions",
+                                                            "viewed",
+                                                            "trackableViews"
+                                                        ],
+                                                        "properties": {
+                                                            "listId": {
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "description": "List Id of email campaign (only in case of get email campaign(s)(not for global stats))",
+                                                                "example": 2
+                                                            },
+                                                            "uniqueClicks": {
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "description": "Number of unique clicks for the campaign",
+                                                                "example": 2300
+                                                            },
+                                                            "clickers": {
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "description": "Number of total clicks for the campaign",
+                                                                "example": 2665
+                                                            },
+                                                            "complaints": {
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "description": "Number of complaints (Spam reports) for the campaign",
+                                                                "example": 1
+                                                            },
+                                                            "delivered": {
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "description": "Number of delivered emails for the campaign",
+                                                                "example": 19765
+                                                            },
+                                                            "sent": {
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "description": "Number of sent emails for the campaign",
+                                                                "example": 19887
+                                                            },
+                                                            "softBounces": {
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "description": "Number of softbounce for the campaign",
+                                                                "example": 100
+                                                            },
+                                                            "hardBounces": {
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "description": "Number of harbounce for the campaign",
+                                                                "example": 87
+                                                            },
+                                                            "uniqueViews": {
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "description": "Number of unique openings for the campaign",
+                                                                "example": 7779
+                                                            },
+                                                            "trackableViews": {
+                                                                "type": "integer",
+                                                                "description": "Recipients without any privacy protection option enabled in their email client",
+                                                                "format": "int64",
+                                                                "example": 5661
+                                                            },
+                                                            "unsubscriptions": {
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "description": "Number of unsubscription for the campaign",
+                                                                "example": 2
+                                                            },
+                                                            "viewed": {
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "description": "Number of openings for the campaign",
+                                                                "example": 8999
+                                                            },
+                                                            "deferred": {
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "description": "Number of deferred emails for the campaign",
+                                                                "example": 30
+                                                            },
+                                                            "returnBounce": {
+                                                                "description": "Total number of non-delivered campaigns for a particular campaign id.",
+                                                                "type": "integer",
+                                                                "format": "int64",
+                                                                "example": 5
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "campaignStats": {
+                                                "type": "array",
+                                                "description": "List-wise statistics of the campaign.",
+                                                "items": {
+                                                    "type": "object",
+                                                    "allOf": [
+                                                        {
+                                                            "type": "object",
+                                                            "required": [
+                                                                "uniqueClicks",
+                                                                "clickers",
+                                                                "complaints",
+                                                                "delivered",
+                                                                "sent",
+                                                                "softBounces",
+                                                                "hardBounces",
+                                                                "uniqueViews",
+                                                                "unsubscriptions",
+                                                                "viewed",
+                                                                "trackableViews"
+                                                            ],
+                                                            "properties": {
+                                                                "listId": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "List Id of email campaign (only in case of get email campaign(s)(not for global stats))",
+                                                                    "example": 2
+                                                                },
+                                                                "uniqueClicks": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of unique clicks for the campaign",
+                                                                    "example": 2300
+                                                                },
+                                                                "clickers": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of total clicks for the campaign",
+                                                                    "example": 2665
+                                                                },
+                                                                "complaints": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of complaints (Spam reports) for the campaign",
+                                                                    "example": 1
+                                                                },
+                                                                "delivered": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of delivered emails for the campaign",
+                                                                    "example": 19765
+                                                                },
+                                                                "sent": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of sent emails for the campaign",
+                                                                    "example": 19887
+                                                                },
+                                                                "softBounces": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of softbounce for the campaign",
+                                                                    "example": 100
+                                                                },
+                                                                "hardBounces": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of harbounce for the campaign",
+                                                                    "example": 87
+                                                                },
+                                                                "uniqueViews": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of unique openings for the campaign",
+                                                                    "example": 7779
+                                                                },
+                                                                "trackableViews": {
+                                                                    "type": "integer",
+                                                                    "description": "Recipients without any privacy protection option enabled in their email client",
+                                                                    "format": "int64",
+                                                                    "example": 5661
+                                                                },
+                                                                "unsubscriptions": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of unsubscription for the campaign",
+                                                                    "example": 2
+                                                                },
+                                                                "viewed": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of openings for the campaign",
+                                                                    "example": 8999
+                                                                },
+                                                                "deferred": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of deferred emails for the campaign",
+                                                                    "example": 30
+                                                                },
+                                                                "returnBounce": {
+                                                                    "description": "Total number of non-delivered campaigns for a particular campaign id.",
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "example": 5
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "mirrorClick": {
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "description": "Number of clicks on mirror link",
+                                                "example": 120
+                                            },
+                                            "remaining": {
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "description": "Number of remaning emails to send",
+                                                "example": 1000
+                                            },
+                                            "linksStats": {
+                                                "type": "object",
+                                                "description": "Statistics about the number of clicks for the links",
+                                                "example": {
+                                                    "example.abc.com": 7,
+                                                    "example.domain.com": 10
+                                                }
+                                            },
+                                            "statsByDomain": {
+                                                "type": "object",
+                                                "additionalProperties": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "uniqueClicks",
+                                                        "clickers",
+                                                        "complaints",
+                                                        "delivered",
+                                                        "sent",
+                                                        "softBounces",
+                                                        "hardBounces",
+                                                        "uniqueViews",
+                                                        "unsubscriptions",
+                                                        "viewed",
+                                                        "trackableViews"
+                                                    ],
+                                                    "properties": {
+                                                        "listId": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "List Id of email campaign (only in case of get email campaign(s)(not for global stats))",
+                                                            "example": 2
+                                                        },
+                                                        "uniqueClicks": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of unique clicks for the campaign",
+                                                            "example": 2300
+                                                        },
+                                                        "clickers": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of total clicks for the campaign",
+                                                            "example": 2665
+                                                        },
+                                                        "complaints": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of complaints (Spam reports) for the campaign",
+                                                            "example": 1
+                                                        },
+                                                        "delivered": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of delivered emails for the campaign",
+                                                            "example": 19765
+                                                        },
+                                                        "sent": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of sent emails for the campaign",
+                                                            "example": 19887
+                                                        },
+                                                        "softBounces": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of softbounce for the campaign",
+                                                            "example": 100
+                                                        },
+                                                        "hardBounces": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of harbounce for the campaign",
+                                                            "example": 87
+                                                        },
+                                                        "uniqueViews": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of unique openings for the campaign",
+                                                            "example": 7779
+                                                        },
+                                                        "trackableViews": {
+                                                            "type": "integer",
+                                                            "description": "Recipients without any privacy protection option enabled in their email client",
+                                                            "format": "int64",
+                                                            "example": 5661
+                                                        },
+                                                        "unsubscriptions": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of unsubscription for the campaign",
+                                                            "example": 2
+                                                        },
+                                                        "viewed": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of openings for the campaign",
+                                                            "example": 8999
+                                                        },
+                                                        "deferred": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of deferred emails for the campaign",
+                                                            "example": 30
+                                                        },
+                                                        "returnBounce": {
+                                                            "description": "Total number of non-delivered campaigns for a particular campaign id.",
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "example": 5
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "statsByDevice": {
+                                                "description": "Statistics about the campaign on the basis of various devices",
+                                                "type": "object",
+                                                "properties": {
+                                                    "desktop": {
+                                                        "type": "object",
+                                                        "description": "Statistics of the campaign on the basis of desktop devices",
+                                                        "additionalProperties": {
+                                                            "type": "object",
+                                                            "required": [
+                                                                "clickers",
+                                                                "uniqueClicks",
+                                                                "viewed",
+                                                                "uniqueViews"
+                                                            ],
+                                                            "properties": {
+                                                                "clickers": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of total clicks for the campaign using the particular browser",
+                                                                    "example": 2665
+                                                                },
+                                                                "uniqueClicks": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of unique clicks for the campaign using the particular browser",
+                                                                    "example": 2300
+                                                                },
+                                                                "viewed": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of openings for the campaign using the particular browser",
+                                                                    "example": 8999
+                                                                },
+                                                                "uniqueViews": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of unique openings for the campaign using the particular browser",
+                                                                    "example": 7779
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "mobile": {
+                                                        "type": "object",
+                                                        "description": "Statistics of the campaign on the basis of mobile devices",
+                                                        "additionalProperties": {
+                                                            "type": "object",
+                                                            "required": [
+                                                                "clickers",
+                                                                "uniqueClicks",
+                                                                "viewed",
+                                                                "uniqueViews"
+                                                            ],
+                                                            "properties": {
+                                                                "clickers": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of total clicks for the campaign using the particular browser",
+                                                                    "example": 2665
+                                                                },
+                                                                "uniqueClicks": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of unique clicks for the campaign using the particular browser",
+                                                                    "example": 2300
+                                                                },
+                                                                "viewed": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of openings for the campaign using the particular browser",
+                                                                    "example": 8999
+                                                                },
+                                                                "uniqueViews": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of unique openings for the campaign using the particular browser",
+                                                                    "example": 7779
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "tablet": {
+                                                        "type": "object",
+                                                        "description": "Statistics of the campaign on the basis of tablet devices",
+                                                        "additionalProperties": {
+                                                            "type": "object",
+                                                            "required": [
+                                                                "clickers",
+                                                                "uniqueClicks",
+                                                                "viewed",
+                                                                "uniqueViews"
+                                                            ],
+                                                            "properties": {
+                                                                "clickers": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of total clicks for the campaign using the particular browser",
+                                                                    "example": 2665
+                                                                },
+                                                                "uniqueClicks": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of unique clicks for the campaign using the particular browser",
+                                                                    "example": 2300
+                                                                },
+                                                                "viewed": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of openings for the campaign using the particular browser",
+                                                                    "example": 8999
+                                                                },
+                                                                "uniqueViews": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of unique openings for the campaign using the particular browser",
+                                                                    "example": 7779
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "unknown": {
+                                                        "type": "object",
+                                                        "description": "Statistics of the campaign on the basis of unknown devices",
+                                                        "additionalProperties": {
+                                                            "type": "object",
+                                                            "required": [
+                                                                "clickers",
+                                                                "uniqueClicks",
+                                                                "viewed",
+                                                                "uniqueViews"
+                                                            ],
+                                                            "properties": {
+                                                                "clickers": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of total clicks for the campaign using the particular browser",
+                                                                    "example": 2665
+                                                                },
+                                                                "uniqueClicks": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of unique clicks for the campaign using the particular browser",
+                                                                    "example": 2300
+                                                                },
+                                                                "viewed": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of openings for the campaign using the particular browser",
+                                                                    "example": 8999
+                                                                },
+                                                                "uniqueViews": {
+                                                                    "type": "integer",
+                                                                    "format": "int64",
+                                                                    "description": "Number of unique openings for the campaign using the particular browser",
+                                                                    "example": 7779
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "statsByBrowser": {
+                                                "description": "Statistics about the campaign on the basis of various browsers",
+                                                "type": "object",
+                                                "additionalProperties": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "clickers",
+                                                        "uniqueClicks",
+                                                        "viewed",
+                                                        "uniqueViews"
+                                                    ],
+                                                    "properties": {
+                                                        "clickers": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of total clicks for the campaign using the particular browser",
+                                                            "example": 2665
+                                                        },
+                                                        "uniqueClicks": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of unique clicks for the campaign using the particular browser",
+                                                            "example": 2300
+                                                        },
+                                                        "viewed": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of openings for the campaign using the particular browser",
+                                                            "example": 8999
+                                                        },
+                                                        "uniqueViews": {
+                                                            "type": "integer",
+                                                            "format": "int64",
+                                                            "description": "Number of unique openings for the campaign using the particular browser",
+                                                            "example": 7779
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "shareLink": {
+                                "type": "string",
+                                "format": "url",
+                                "description": "Link to share the campaign on social medias",
+                                "example": "http://dhh.sendinblue.com/fhsgccc.html?t=9865448900"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "count": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of Email campaigns retrieved",
+            "example": 24
+        }
+    }
+}

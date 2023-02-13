@@ -1,0 +1,19 @@
+{
+    "type": "object",
+    "properties": {
+        "childIdentifier": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "ip": {
+                    "type": "string",
+                    "description": "Dedicated ID",
+                    "example": "123.65.8.22"
+                }
+            }
+        }
+    }
+}

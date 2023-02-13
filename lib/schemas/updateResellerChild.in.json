@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "properties": {
+        "childIdentifier": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "New Email address to update the child account",
+                    "example": "josh.cruise@example.com"
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "New First name to use to update the child account",
+                    "example": "Josh"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "New Last name to use to update the child account",
+                    "example": "Cruise"
+                },
+                "companyName": {
+                    "type": "string",
+                    "description": "New Company name to use to update the child account",
+                    "example": "Your Company"
+                },
+                "password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "New password for the child account to login",
+                    "example": "Pa55w0rd65"
+                }
+            }
+        }
+    }
+}

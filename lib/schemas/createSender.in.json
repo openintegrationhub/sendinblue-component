@@ -1,0 +1,56 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "required": [
+                "name",
+                "email"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "From Name to use for the sender",
+                    "example": "Newsletter"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "From email to use for the sender. A verification email will be sent to this address.",
+                    "example": "newsletter@mycompany.com"
+                },
+                "ips": {
+                    "type": "array",
+                    "description": "Mandatory in case of dedicated IP, IPs to associate to the sender",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "ip",
+                            "domain"
+                        ],
+                        "properties": {
+                            "ip": {
+                                "description": "Dedicated IP available in your account",
+                                "type": "string",
+                                "example": "123.98.689.7"
+                            },
+                            "domain": {
+                                "description": "Domain of the IP",
+                                "type": "string",
+                                "example": "mycompany.com"
+                            },
+                            "weight": {
+                                "description": "Weight to apply to the IP. Sum of all IP weights must be 100. Should be passed for either ALL or NONE of the IPs. If it's not passed, the sending will be equally balanced on all IPs.",
+                                "type": "integer",
+                                "format": "int64",
+                                "maximum": 100,
+                                "minimum": 1,
+                                "example": 50
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

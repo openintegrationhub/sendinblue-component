@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "childIdentifier": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "sms": {
+                    "description": "Required if email credits are empty. SMS credits to be removed from the child account",
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 300
+                },
+                "email": {
+                    "description": "Required if sms credits are empty. Email credits to be removed from the child account",
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 500
+                }
+            }
+        }
+    }
+}

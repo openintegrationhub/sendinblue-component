@@ -1,0 +1,27 @@
+{
+    "type": "array",
+    "items": {
+        "type": "object",
+        "allOf": [
+            {
+                "type": "object",
+                "required": [
+                    "domain",
+                    "active"
+                ],
+                "properties": {
+                    "domain": {
+                        "description": "Sender domain",
+                        "type": "string",
+                        "example": "mycustomdomain.com"
+                    },
+                    "active": {
+                        "description": "indicates whether a domain is verified or not",
+                        "type": "boolean",
+                        "example": true
+                    }
+                }
+            }
+        ]
+    }
+}

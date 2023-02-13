@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "required": [
+                "name",
+                "folderId"
+            ],
+            "properties": {
+                "name": {
+                    "description": "Name of the list",
+                    "type": "string",
+                    "example": "Magento Customer - ES"
+                },
+                "folderId": {
+                    "description": "Id of the parent folder in which this list is to be created",
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 2
+                }
+            }
+        }
+    }
+}

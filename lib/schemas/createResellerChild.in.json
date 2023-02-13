@@ -1,0 +1,57 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "type": "object",
+            "required": [
+                "email",
+                "firstName",
+                "lastName",
+                "companyName",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "description": "Email address to create the child account",
+                    "type": "string",
+                    "format": "email",
+                    "example": "josh.cruise@example.com"
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name to use to create the child account",
+                    "example": "Josh"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name to use to create the child account",
+                    "example": "Cruise"
+                },
+                "companyName": {
+                    "type": "string",
+                    "description": "Company name to use to create the child account",
+                    "example": "Your Company"
+                },
+                "password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "Password for the child account to login",
+                    "example": "Pa55w0rd65"
+                },
+                "language": {
+                    "description": "Language of the child account",
+                    "enum": [
+                        "fr",
+                        "es",
+                        "pt",
+                        "it",
+                        "de",
+                        "en"
+                    ],
+                    "type": "string",
+                    "example": "en"
+                }
+            }
+        }
+    }
+}

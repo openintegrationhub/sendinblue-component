@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "campaignId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "type": "object",
+            "required": [
+                "recipientsType"
+            ],
+            "properties": {
+                "notifyURL": {
+                    "description": "Webhook called once the export process is finished. For reference, https://help.sendinblue.com/hc/en-us/articles/360007666479",
+                    "type": "string",
+                    "format": "url",
+                    "example": "http://requestb.in/173lyyx1"
+                },
+                "recipientsType": {
+                    "description": "Type of recipients to export for a campaign",
+                    "enum": [
+                        "all",
+                        "nonClickers",
+                        "nonOpeners",
+                        "clickers",
+                        "openers",
+                        "softBounces",
+                        "hardBounces",
+                        "unsubscribed"
+                    ],
+                    "type": "string",
+                    "example": "openers"
+                }
+            }
+        }
+    }
+}

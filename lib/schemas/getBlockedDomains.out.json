@@ -1,0 +1,18 @@
+{
+    "description": "list of blocked domains",
+    "type": "object",
+    "required": [
+        "domains"
+    ],
+    "properties": {
+        "domains": {
+            "description": "List of all blocked domains",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "description": "name of blocked domain",
+                "example": "contact.com"
+            }
+        }
+    }
+}

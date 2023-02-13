@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "campaignId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        }
+    }
+}

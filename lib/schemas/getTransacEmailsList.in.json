@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "properties": {
+        "email": {
+            "required": false,
+            "type": "string"
+        },
+        "templateId": {
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+        },
+        "messageId": {
+            "required": false,
+            "type": "string"
+        },
+        "startDate": {
+            "required": false,
+            "type": "string",
+            "format": "date"
+        },
+        "endDate": {
+            "required": false,
+            "type": "string",
+            "format": "date"
+        }
+    }
+}

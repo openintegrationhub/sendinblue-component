@@ -1,0 +1,71 @@
+{
+    "type": "object",
+    "required": [
+        "email",
+        "subject",
+        "date",
+        "events",
+        "body",
+        "attachmentCount"
+    ],
+    "properties": {
+        "email": {
+            "description": "Email address to which transactional email has been sent",
+            "type": "string",
+            "format": "email",
+            "example": "abc@example.com"
+        },
+        "subject": {
+            "description": "Subject of the sent email",
+            "type": "string",
+            "example": "Summer Camp"
+        },
+        "templateId": {
+            "description": "Id of the template",
+            "type": "integer",
+            "format": "int64",
+            "example": 2
+        },
+        "date": {
+            "description": "Date on which transactional email was sent",
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-03-12T12:30:00Z"
+        },
+        "events": {
+            "description": "Series of events which occurred on the transactional email",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "time"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "Name of the event that occurred on the sent email",
+                        "type": "string",
+                        "example": "delivered"
+                    },
+                    "time": {
+                        "description": "Time at which the event occurred",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2017-03-12T12:30:00Z"
+                    }
+                }
+            }
+        },
+        "body": {
+            "description": "Actual content of the transactional email that has been sent",
+            "type": "string",
+            "example": "<!DOCTYPE html> <html> <body> <h1>Greetings from the team</h1> <p>This is the actual html content sent</p> </body> </html>"
+        },
+        "attachmentCount": {
+            "description": "Count of the attachments that were sent in the email",
+            "type": "integer",
+            "format": "int64",
+            "example": 2
+        }
+    }
+}

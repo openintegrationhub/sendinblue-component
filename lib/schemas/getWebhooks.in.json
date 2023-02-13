@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "type": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "marketing",
+                "transactional"
+            ],
+            "default": "transactional"
+        },
+        "sort": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "asc",
+                "desc"
+            ],
+            "default": "desc"
+        }
+    }
+}

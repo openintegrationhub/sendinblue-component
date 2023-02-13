@@ -1,0 +1,52 @@
+{
+    "type": "object",
+    "required": [
+        "child",
+        "reseller"
+    ],
+    "properties": {
+        "child": {
+            "description": "Credits remaining for child account",
+            "type": "object",
+            "required": [
+                "sms",
+                "email"
+            ],
+            "properties": {
+                "sms": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "SMS Credits remaining for child account",
+                    "example": 500
+                },
+                "email": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "Email Credits remaining for child account",
+                    "example": 2000
+                }
+            }
+        },
+        "reseller": {
+            "type": "object",
+            "required": [
+                "sms",
+                "email"
+            ],
+            "properties": {
+                "sms": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "SMS Credits remaining for reseller account",
+                    "example": 12900
+                },
+                "email": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "Email Credits remaining for reseller account",
+                    "example": 2000000
+                }
+            }
+        }
+    }
+}

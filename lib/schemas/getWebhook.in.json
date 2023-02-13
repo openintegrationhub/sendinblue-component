@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "webhookId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        }
+    }
+}

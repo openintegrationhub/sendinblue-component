@@ -1,0 +1,34 @@
+{
+    "type": "object",
+    "properties": {
+        "childIdentifier": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "transactionalEmail": {
+                    "description": "Status of Transactional Email Platform activation for your account (true=enabled, false=disabled)",
+                    "type": "boolean",
+                    "example": false
+                },
+                "transactionalSms": {
+                    "description": "Status of Transactional SMS Platform activation for your account (true=enabled, false=disabled)",
+                    "type": "boolean",
+                    "example": false
+                },
+                "marketingAutomation": {
+                    "description": "Status of Marketing Automation Platform activation for your account (true=enabled, false=disabled)",
+                    "type": "boolean",
+                    "example": true
+                },
+                "smsCampaign": {
+                    "description": "Status of SMS Campaign Platform activation for your account (true=enabled, false=disabled)",
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        }
+    }
+}

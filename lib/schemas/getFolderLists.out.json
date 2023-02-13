@@ -1,0 +1,57 @@
+{
+    "type": "object",
+    "required": [
+        "lists",
+        "count"
+    ],
+    "properties": {
+        "lists": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "name",
+                            "totalSubscribers",
+                            "totalBlacklisted"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "ID of the list",
+                                "example": 23
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Name of the list",
+                                "example": "Magento Customers - EN"
+                            },
+                            "totalBlacklisted": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "Number of blacklisted contacts in the list",
+                                "example": 13
+                            },
+                            "totalSubscribers": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "Number of contacts in the list",
+                                "example": 1776
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "count": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of lists in the folder",
+            "example": 6
+        }
+    }
+}

@@ -1,0 +1,76 @@
+{
+    "type": "object",
+    "required": [
+        "range",
+        "requests",
+        "delivered",
+        "softBounces",
+        "hardBounces",
+        "blocked",
+        "unsubscribed",
+        "replied",
+        "accepted",
+        "rejected"
+    ],
+    "properties": {
+        "range": {
+            "type": "string",
+            "description": "Time frame of the report",
+            "example": "2016-09-08|2017-04-06"
+        },
+        "requests": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of requests for the timeframe",
+            "example": 263
+        },
+        "delivered": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of delivered SMS for the timeframe",
+            "example": 249
+        },
+        "hardBounces": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of hardbounces for the timeframe",
+            "example": 1
+        },
+        "softBounces": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of softbounces for the timeframe",
+            "example": 4
+        },
+        "blocked": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of blocked contact for the timeframe",
+            "example": 2
+        },
+        "unsubscribed": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of unsubscription for the timeframe",
+            "example": 6
+        },
+        "replied": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of answered SMS for the timeframe",
+            "example": 12
+        },
+        "accepted": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of accepted for the timeframe",
+            "example": 252
+        },
+        "rejected": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of rejected for the timeframe",
+            "example": 8
+        }
+    }
+}

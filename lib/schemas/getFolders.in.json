@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "limit": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "maximum": 50,
+            "default": 10
+        },
+        "offset": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+        },
+        "sort": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "asc",
+                "desc"
+            ],
+            "default": "desc"
+        }
+    }
+}

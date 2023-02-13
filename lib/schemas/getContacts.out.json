@@ -1,0 +1,98 @@
+{
+    "type": "object",
+    "required": [
+        "contacts",
+        "count"
+    ],
+    "properties": {
+        "contacts": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object",
+                        "required": [
+                            "email",
+                            "id",
+                            "emailBlacklisted",
+                            "smsBlacklisted",
+                            "createdAt",
+                            "modifiedAt",
+                            "listIds",
+                            "attributes"
+                        ],
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "format": "email",
+                                "description": "Email address of the contact for which you requested the details",
+                                "example": "john.smith@example.com"
+                            },
+                            "id": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "ID of the contact for which you requested the details",
+                                "example": 32
+                            },
+                            "emailBlacklisted": {
+                                "type": "boolean",
+                                "description": "Blacklist status for email campaigns (true=blacklisted, false=not blacklisted)",
+                                "example": false
+                            },
+                            "smsBlacklisted": {
+                                "type": "boolean",
+                                "description": "Blacklist status for SMS campaigns (true=blacklisted, false=not blacklisted)",
+                                "example": true
+                            },
+                            "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Creation UTC date-time of the contact (YYYY-MM-DDTHH:mm:ss.SSSZ)",
+                                "example": "2017-05-12T12:30:00Z"
+                            },
+                            "modifiedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Last modification UTC date-time of the contact (YYYY-MM-DDTHH:mm:ss.SSSZ)",
+                                "example": "2017-05-12T12:30:00Z"
+                            },
+                            "listIds": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "description": "List(s) in which the contact is included",
+                                    "example": "12,9,20"
+                                }
+                            },
+                            "listUnsubscribed": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "description": "List(s) in which the contact is included (only available if unsubscription per list is activated for the account)",
+                                    "example": "1,2"
+                                }
+                            },
+                            "attributes": {
+                                "type": "object",
+                                "description": "Set of attributes of the contact",
+                                "example": {
+                                    "name": "Joe",
+                                    "email": "joe@example.com"
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "count": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Number of contacts",
+            "example": 17655
+        }
+    }
+}

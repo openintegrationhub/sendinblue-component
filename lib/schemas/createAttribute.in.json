@@ -1,0 +1,66 @@
+{
+    "type": "object",
+    "properties": {
+        "attributeCategory": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "normal",
+                "transactional",
+                "category",
+                "calculated",
+                "global"
+            ]
+        },
+        "attributeName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "value": {
+                    "description": "Value of the attribute. Use only if the attribute's category is 'calculated' or 'global'",
+                    "type": "string",
+                    "example": "COUNT[BLACKLISTED,BLACKLISTED,<,NOW()]"
+                },
+                "enumeration": {
+                    "description": "List of values and labels that the attribute can take. Use only if the attribute's category is \"category\". For example, [{\"value\":1, \"label\":\"male\"}, {\"value\":2, \"label\":\"female\"}]",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "value",
+                            "label"
+                        ],
+                        "properties": {
+                            "value": {
+                                "description": "Id of the value",
+                                "type": "integer",
+                                "example": 1
+                            },
+                            "label": {
+                                "description": "Label of the value",
+                                "type": "string",
+                                "example": "Women"
+                            }
+                        }
+                    }
+                },
+                "type": {
+                    "description": "Type of the attribute. Use only if the attribute's category is 'normal', 'category' or 'transactional' ( type 'boolean' is only available if the category is 'normal' attribute, type 'id' is only available if the category is 'transactional' attribute & type 'category' is only available if the category is 'category' attribute )",
+                    "type": "string",
+                    "enum": [
+                        "text",
+                        "date",
+                        "float",
+                        "boolean",
+                        "id",
+                        "category"
+                    ],
+                    "example": "text"
+                }
+            }
+        }
+    }
+}

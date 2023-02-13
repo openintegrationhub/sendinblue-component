@@ -1,0 +1,10 @@
+{
+    "properties": {
+        "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID of the contact when a new contact is created",
+            "example": 122
+        }
+    }
+}

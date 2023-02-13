@@ -1,0 +1,65 @@
+{
+    "type": "object",
+    "properties": {
+        "campaignId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "Name of the campaign",
+                    "type": "string",
+                    "example": "Spring Promo Code"
+                },
+                "sender": {
+                    "description": "Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters**",
+                    "type": "string",
+                    "maxLength": 15,
+                    "example": "MyShop"
+                },
+                "content": {
+                    "description": "Content of the message. The maximum characters used per SMS is 160, if used more than that, it will be counted as more than one SMS",
+                    "type": "string",
+                    "example": "Get a discount by visiting our NY store and saying : Happy Spring!"
+                },
+                "recipients": {
+                    "type": "object",
+                    "required": [
+                        "listIds"
+                    ],
+                    "properties": {
+                        "listIds": {
+                            "description": "Lists Ids to send the campaign to. REQUIRED if scheduledAt is not empty",
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "List Id to send the campaign to",
+                                "example": 54
+                            }
+                        },
+                        "exclusionListIds": {
+                            "description": "List ids which have to be excluded from a campaign",
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "List Id to exclude from the campaign",
+                                "example": 15
+                            }
+                        }
+                    }
+                },
+                "scheduledAt": {
+                    "description": "UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.",
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2017-05-05T12:30:00+02:00"
+                }
+            }
+        }
+    }
+}

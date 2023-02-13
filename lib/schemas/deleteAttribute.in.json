@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "attributeCategory": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "normal",
+                "transactional",
+                "category",
+                "calculated",
+                "global"
+            ]
+        },
+        "attributeName": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

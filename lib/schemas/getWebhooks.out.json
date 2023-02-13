@@ -1,0 +1,76 @@
+{
+    "type": "object",
+    "required": [
+        "webhooks"
+    ],
+    "properties": {
+        "webhooks": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object",
+                        "required": [
+                            "url",
+                            "id",
+                            "description",
+                            "events",
+                            "type",
+                            "createdAt",
+                            "modifiedAt"
+                        ],
+                        "properties": {
+                            "url": {
+                                "type": "string",
+                                "format": "url",
+                                "description": "URL of the webhook",
+                                "example": "http://requestb.in/173lyyx1"
+                            },
+                            "id": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "ID of the webhook",
+                                "example": 654
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Description of the webhook",
+                                "example": "Webhook triggered on campaign openings"
+                            },
+                            "events": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "description": "Events which will trigger the webhook when they occure",
+                                    "example": "opens,clicks"
+                                }
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "marketing",
+                                    "transac"
+                                ],
+                                "description": "Type of webhook (marketing or transac)",
+                                "example": "marketing"
+                            },
+                            "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Creation UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ)",
+                                "example": "2016-12-01T12:50:00Z"
+                            },
+                            "modifiedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Last modification UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ)",
+                                "example": "2017-05-12T13:15:00Z"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

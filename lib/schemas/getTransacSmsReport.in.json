@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "startDate": {
+            "required": false,
+            "type": "string"
+        },
+        "endDate": {
+            "required": false,
+            "type": "string"
+        },
+        "days": {
+            "required": false,
+            "type": "integer"
+        },
+        "tag": {
+            "required": false,
+            "type": "string"
+        },
+        "sort": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "asc",
+                "desc"
+            ],
+            "default": "desc"
+        }
+    }
+}
