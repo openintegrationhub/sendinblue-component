@@ -7,7 +7,11 @@ A generated OIH connector for the SendinBlue API API (version 3.0.0).
 
 Generated from: https://api.sendinblue.com/v3/swagger_definition.yml <br/>
 Generated at: 2023-02-13T09:42:07+01:00 <br/>
-Snapshot key: 
+Snapshot key:
+
+## Custom changes
+
+Added transformations from/to oih person format for contacts
 
 ## API Description
 
