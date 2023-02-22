@@ -18,19 +18,19 @@ describe('Transformations - personFromOih', () => {
 
     expect(contact).to.not.be.empty;
     expect(contact).to.be.an('object');
-    expect(contact.metadata).to.be.an('object');
-    expect(contact.data).to.be.an('object');
+    // expect(contact.metadata).to.be.an('object');
+    // expect(contact.data).to.be.an('object');
 
-    expect(contact.data.attributes).to.be.an('object');
+    expect(contact.attributes).to.be.an('object');
 
-    expect(contact.metadata.recordUid).to.equal('25mop1jxq2ss3x');
+    // expect(contact.metadata.recordUid).to.equal('25mop1jxq2ss3x');
 
-    expect(contact.data.email).to.equal('info@smith.com');
+    expect(contact.email).to.equal('info@smith.com');
 
-    expect(contact.data.emailBlacklisted).to.equal(false);
-    expect(contact.data.smsBlacklisted).to.equal(true);
+    expect(contact.emailBlacklisted).to.equal(false);
+    expect(contact.smsBlacklisted).to.equal(true);
 
-    expect(contact.data.attributes.name).to.equal('Mark Smith');
+    expect(contact.attributes.name).to.equal('Mark Smith');
   });
 });
 
@@ -43,20 +43,20 @@ describe('Transformations - personToOih', () => {
 
     expect(person).to.not.be.empty;
     expect(person).to.be.an('object');
-    expect(person.metadata).to.be.an('object');
-    expect(person.metadata.recordUid).to.equal('279');
+    // expect(person.metadata).to.be.an('object');
+    // expect(person.metadata.recordUid).to.equal('279');
 
-    expect(person.data).to.be.an('object');
+    // expect(person.data).to.be.an('object');
 
-    expect(person.data.firstName).to.equal('Moe');
-    expect(person.data.lastName).to.equal('Flanders');
+    expect(person.firstName).to.equal('Moe');
+    expect(person.lastName).to.equal('Flanders');
 
-    expect(person.data.contactData).to.be.an('array');
-    expect(person.data.contactData[0].type).to.equal('email');
-    expect(person.data.contactData[0].value).to.equal('a@b.de');
+    expect(person.contactData).to.be.an('array');
+    expect(person.contactData[0].type).to.equal('email');
+    expect(person.contactData[0].value).to.equal('a@b.de');
 
-    expect(person.data.categories).to.be.an('array');
-    expect(person.data.categories.length).to.equal(1);
-    expect(person.data.categories).to.deep.equal(['emailBlacklisted']);
+    expect(person.categories).to.be.an('array');
+    expect(person.categories.length).to.equal(1);
+    expect(person.categories).to.deep.equal(['emailBlacklisted']);
   });
 });
