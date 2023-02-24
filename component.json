@@ -31,6 +31,18 @@
             "main": "./lib/lookups/lookup.js",
             "title": "Function to run a lookup",
             "description": "Function to call an internal trigger or action"
+        },
+        "getContacts": {
+            "main": "./lib/triggers/getContacts.js",
+            "title": "Get all the contacts",
+            "callParams": {
+                "pathName": "/contacts",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/getContacts.in.json",
+                "out": "./lib/schemas/getContacts.out.json"
+            }
         }
     },
     "actions": {
@@ -373,18 +385,6 @@
             "metadata": {
                 "in": "./lib/schemas/sendTemplate.in.json",
                 "out": "./lib/schemas/sendTemplate.out.json"
-            }
-        },
-        "getContacts": {
-            "main": "./lib/actions/action.js",
-            "title": "Get all the contacts",
-            "callParams": {
-                "pathName": "/contacts",
-                "method": "get"
-            },
-            "metadata": {
-                "in": "./lib/schemas/getContacts.in.json",
-                "out": "./lib/schemas/getContacts.out.json"
             }
         },
         "deleteHardbounces": {
