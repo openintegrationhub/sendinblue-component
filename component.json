@@ -427,6 +427,19 @@
                 "out": "./lib/schemas/createContact.out.json"
             }
         },
+        "upsertContact": {
+            "main": "./lib/actions/upsertContact.js",
+            "title": "Upsert a contact and add to list if id given",
+            "callParams": {
+                "pathName": "/contacts",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/upsertContact.in.json",
+                "out": "./lib/schemas/upsertContact.out.json"
+            }
+        },
         "getContactInfo": {
             "main": "./lib/actions/action.js",
             "title": "Get a contact's details",
