@@ -39,7 +39,10 @@ describe('Transformations - personToOih', () => {
   });
 
   it('should transform contact to OIH person format', async () => {
+    console.log(contactMessage);
     const person = await contactToOihPerson(contactMessage);
+
+    console.log(person);
 
     expect(person).to.not.be.empty;
     expect(person).to.be.an('object');
