@@ -55,20 +55,17 @@ const oihPersonMessage = {
 };
 
 const contactMessage = {
-  metadata: {},
-  data: {
-    id: '279',
-    email: 'a@b.de',
-    emailBlacklisted: true,
-    smsBlacklisted: false,
-    createdAt: '2017-05-12T12:30:00Z',
-    modifiedAt: '2017-05-12T12:30:00Z',
-    listIds: [12, 9, 20],
-    listUnsubscribed: [1, 2],
-    attributes: {
-      name: 'Moe Flanders',
-      email: 'moe@example.com',
-    },
+  id: '279',
+  email: 'a@b.de',
+  emailBlacklisted: true,
+  smsBlacklisted: false,
+  createdAt: '2017-05-12T12:30:00Z',
+  modifiedAt: '2017-05-12T12:30:00Z',
+  listIds: [12, 9, 20],
+  listUnsubscribed: [1, 2],
+  attributes: {
+    name: 'Moe Flanders',
+    email: 'moe@example.com',
   },
 };
 
