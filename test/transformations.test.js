@@ -31,6 +31,8 @@ describe('Transformations - personFromOih', () => {
     expect(contact.smsBlacklisted).to.equal(true);
 
     expect(contact.attributes.name).to.equal('Mark Smith');
+    expect(contact.attributes.FIRSTNAME).to.equal('Mark');
+    expect(contact.attributes.LASTNAME).to.equal('Smith');
   });
 });
 
@@ -41,8 +43,6 @@ describe('Transformations - personToOih', () => {
   it('should transform contact to OIH person format', async () => {
     console.log(contactMessage);
     const person = await contactToOihPerson(contactMessage);
-
-    console.log(person);
 
     expect(person).to.not.be.empty;
     expect(person).to.be.an('object');
