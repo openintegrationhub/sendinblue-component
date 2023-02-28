@@ -47,7 +47,7 @@ describe('Transformations - personToOih', () => {
     expect(person).to.not.be.empty;
     expect(person).to.be.an('object');
     expect(person.metadata).to.be.an('object');
-    expect(person.metadata.recordUid).to.equal('279');
+    expect(person.metadata.recordUid).to.equal('a@b.de');
 
     expect(person.data).to.be.an('object');
 
